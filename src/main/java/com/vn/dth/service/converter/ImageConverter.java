@@ -20,7 +20,7 @@ public class ImageConverter {
         }
     }
 
-    public ImageEntity toEntoty(ImageDto dto) {
+    public ImageEntity toEntity(ImageDto dto) {
         if (dto != null) {
             return new ImageEntity(dto.getId(), dto.getName(), dto.getType(), dto.getSize(), dto.getUrl());
         } else {
@@ -41,7 +41,7 @@ public class ImageConverter {
     public  List<ImageEntity> toEntities(List<ImageDto> dtos) {
         List<ImageEntity> imageEntities = new ArrayList<>();
         if (dtos != null && !dtos.isEmpty()) {
-            dtos.forEach(imageDto -> imageEntities.add(toEntoty(imageDto)));
+            dtos.forEach(imageDto -> imageEntities.add(toEntity(imageDto)));
             return imageEntities;
         } else {
             return imageEntities;
