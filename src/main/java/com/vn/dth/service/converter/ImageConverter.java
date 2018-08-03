@@ -1,7 +1,7 @@
 package com.vn.dth.service.converter;
 
 import com.vn.dth.entity.ImageEntity;
-import com.vn.dth.reposetory.ImageRepository;
+import com.vn.dth.repository.ImageRepository;
 import com.vn.dth.service.dto.ImageDto;
 import org.springframework.beans.factory.annotation.Autowired;
 

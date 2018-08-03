@@ -1,4 +1,4 @@
-package com.vn.dth.reposetory;
+package com.vn.dth.repository;
 
 import com.vn.dth.entity.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
