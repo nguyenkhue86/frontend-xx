@@ -14,7 +14,7 @@
       <mat-form-field class="form">
         <mat-label>Password</mat-label>
         <input matInput class="password" #pass [formControl]="passwordFormControl" required type={{password}} placeholder="password">
-        <button mat-button mat-icon-button matSuffix class="showPass" (click)="showPass()">
+        <button mat-button mat-icon-button matSuffix class="showPass" type="button" (click)="showPass()" >
           <mat-icon>{{visibility}}</mat-icon>
         </button>
         <mat-error *ngIf="passwordFormControl.hasError('required')">
@@ -22,7 +22,7 @@
         </mat-error>
       </mat-form-field>
       <div class="form footer">
-        <button mat-raised-button color="primary" class="logBtn"  (click)="login(user.value,pass.value)" >LOGIN</button>
+        <button mat-raised-button color="primary" class="logBtn" type="submit" (click)="login(user.value,pass.value)" >LOGIN</button>
       </div>
     </form>
 </div>

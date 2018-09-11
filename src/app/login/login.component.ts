@@ -51,22 +51,17 @@ export class LoginComponent implements OnInit {
   ]);
 
 
-  login(username: string, password: string){
+  login(username: string, password: string) {
 
-    let flag: Boolean = false;
-
-    this.Users.forEach(item => {
-      if ( username === item.userName && password === item.password ) {
-        flag = true;
+    for(let i =0; i< this.Users.length; i++) {
+      if ( username === this.Users[i].userName && password === this.Users[i].password ) {
         this.openSnackBar("Success");
         this.route.navigate(['/home']);
         return;
       }
-    });
-
-    if (!flag) {
-      this.openSnackBar("Fail");
     }
+      this.openSnackBar("Fail");
+
 
   }
 
