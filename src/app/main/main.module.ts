@@ -4,7 +4,8 @@ import {MenuModule} from "./menu/menu.module";
 import {MenuComponent} from "./menu/menu.component";
 import {DataComponent} from "./data/data.component";
 import {DataModule} from "./data/data.module";
-import {MatButtonModule, MatMenuModule} from "@angular/material";
+import {MatButtonModule, MatIconModule, MatListModule, MatMenuModule} from "@angular/material";
+import {MainComponent} from "./main.component";
 
 @NgModule({
   imports: [
@@ -12,8 +13,10 @@ import {MatButtonModule, MatMenuModule} from "@angular/material";
     MenuModule,
     DataModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    MatListModule
   ],
-  declarations: [ MenuComponent, DataComponent ]
+  declarations: [ MenuComponent, DataComponent,MainComponent ]
 })
 export class MainModule { }

@@ -1,0 +1,33 @@
+*{
+  box-sizing: border-box;
+}
+.user {
+  padding: 1.5em;
+  margin: 1em;
+}
+.user-group {
+  text-align: center;
+  padding: 0.5em;
+}
+.ul {
+  background: forestgreen;
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+}
+.ul .li {
+  width: 100%;
+  padding: 0.5em 0.8em;
+  font-weight: bold;
+  color: white;
+  font-size: 1em;
+}
+.ul .li span {
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+.li:hover {
+  background: limegreen;
+}
+

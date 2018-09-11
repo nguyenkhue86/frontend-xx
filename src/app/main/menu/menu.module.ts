@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuComponent } from "./menu.component";
-import {MatButtonModule, MatIconModule, MatMenuModule} from "@angular/material";
+import {MatButtonModule, MatMenuModule} from "@angular/material";
 
 @NgModule({
   imports: [
     CommonModule,
     MatMenuModule,
-    MatButtonModule,
-    MatIconModule
+    MatButtonModule
   ],
-  declarations: [ MenuComponent ]
+  declarations: []
 })
 export class MenuModule { }

@@ -1,11 +1,19 @@
-<div class="menu">
-  <mat-menu #rootMenu="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="subMenu">Images</button>
-    <button mat-menu-item>System settings</button>
-  </mat-menu>
-
-  <mat-menu #subMenu="matMenu">
-    <button mat-menu-item>Image List</button>
-    <button mat-menu-item>Add New</button>
-  </mat-menu>
+<div class="user">
+  <div class="user-group">
+    <img src="" alt="User Image Not Found">
+  </div>
+  <div class="user-group">
+    <span>Username</span>
+  </div>
 </div>
+<hr style="color: white">
+<ul class="ul">
+  <li class="li">
+    <mat-icon>add_box</mat-icon>
+    <span>Add new</span>
+  </li>
+  <li class="li">
+    <mat-icon>view_list</mat-icon>
+    <span>Show List</span>
+  </li>
+</ul>

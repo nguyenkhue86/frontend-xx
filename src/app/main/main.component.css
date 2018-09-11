@@ -1,0 +1,11 @@
+.container {
+  width: 100%;
+  display: flex;
+
+}
+.app-menu {
+  min-width: 200px;
+  display: block;
+  min-height: 100vh;
+  background: forestgreen;
+}
