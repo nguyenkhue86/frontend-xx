@@ -5,6 +5,7 @@
 }
 .app-menu {
   min-width: 200px;
+  max-width: 300px;
   display: block;
   min-height: 100vh;
   background: forestgreen;

@@ -5,29 +5,25 @@
   padding: 1.5em;
   margin: 1em;
 }
-.user-group {
+.user .user-group {
   text-align: center;
   padding: 0.5em;
-}
-.ul {
-  background: forestgreen;
-  width: 100%;
-  list-style-type: none;
-  padding: 0;
-}
-.ul .li {
-  width: 100%;
-  padding: 0.5em 0.8em;
-  font-weight: bold;
   color: white;
-  font-size: 1em;
-}
-.ul .li span {
-  text-align: center;
   font-weight: bold;
-  color: white;
 }
-.li:hover {
+.user .user-group .user-image {
+  max-width: 30%;
+}
+.mat-list-item {
+  color: white;
+  padding: 0 0.5em;
+  cursor: pointer;
+
+}
+.mat-list-item:hover {
   background: limegreen;
+}
+.mat-list-item .mat-icon {
+  margin-right:0.3em;
 }
 
