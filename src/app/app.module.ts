@@ -5,8 +5,11 @@ import { AppComponent } from './app.component';
 import {LoginModule} from "./login/login.module";
 import {RouterModule, Routes} from "@angular/router";
 import {LoginComponent} from "./login/login.component";
-import {MainModule} from "./main/main.module";
 import {MainComponent} from "./main/main.component";
+import {ListComponent} from './main/data/list/list.component';
+import {CaptureComponent} from './main/data/capture/capture.component';
+import {MatButtonModule, MatIconModule, MatListModule, MatMenuModule} from '@angular/material';
+import {MenuComponent} from './main/menu/menu.component';
 
 const routes: Routes = [
   { path: '',
@@ -19,20 +22,39 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: MainComponent
+    component: MainComponent,
+    children: [
+      {
+        path: 'list',
+        component: ListComponent
+      },
+      {
+        path: 'capture',
+        component: CaptureComponent
+      }
+    ]
   }
 ];
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent,
+    MenuComponent,
+    ListComponent,
+    CaptureComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     LoginModule,
-    MainModule
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
