@@ -1,3 +1,21 @@
-<p>
-  login works!
-</p>
+<div class="body">
+  <div class="root-div">
+    <div class="header">
+      <h2 class="title">SIGN IN</h2>
+    </div>
+    <mat-form-field class="form">
+      <mat-label>Username</mat-label>
+      <input matInput class="userName" placeholder="username">
+    </mat-form-field>
+    <mat-form-field class="form">
+      <mat-label>Password</mat-label>
+      <input matInput class="password" type={{password}} placeholder="password">
+      <button mat-button mat-icon-button matSuffix class="showPass" (click)="showPass()">
+        <mat-icon>{{visibility}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <div class="form footer">
+      <button mat-raised-button color="primary" class="logBtn">LOGIN</button>
+    </div>
+  </div>
+</div>
