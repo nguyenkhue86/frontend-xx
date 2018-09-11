@@ -1,3 +1,11 @@
-<p>
-  menu works!
-</p>
+<div class="menu">
+  <mat-menu #rootMenu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="subMenu">Images</button>
+    <button mat-menu-item>System settings</button>
+  </mat-menu>
+
+  <mat-menu #subMenu="matMenu">
+    <button mat-menu-item>Image List</button>
+    <button mat-menu-item>Add New</button>
+  </mat-menu>
+</div>
