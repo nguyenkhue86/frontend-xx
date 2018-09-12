@@ -19,8 +19,9 @@ export class MenuComponent implements OnInit {
   toAdd() {
     this.router.navigate(['home/capture']);
   }
-  toLogin() {
-    this.cookieService.delete('username');
+  toLogout() {
+    this.cookieService.deleteAll();
+    this.userName = '';
     this.router.navigate(['login']);
   }
 
