@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, Validators} from "@angular/forms";
-import {User} from "../model/user.model";
-import {Router, RouterLinkActive} from "@angular/router";
-import {MatSnackBar} from "@angular/material";
-import {CookieService} from "ngx-cookie-service";
+import {FormControl, FormGroupDirective, Validators} from '@angular/forms';
+import {User} from '../model/user.model';
+import {Router, RouterLinkActive} from '@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -25,10 +24,10 @@ export class LoginComponent implements OnInit {
       userName: 'ntcong',
       password: '123'
     }
-  ]
+  ];
 
 
-  visibility= 'visibility_off';
+  visibility = 'visibility_off';
   password = 'password';
 
   constructor(private route: Router,
@@ -71,8 +70,8 @@ export class LoginComponent implements OnInit {
   openSnackBar(message: string) {
     this.snackBar.open(message, 'Done', {
       duration: 2000,
-      verticalPosition : "top",
-      horizontalPosition : "right"
+      verticalPosition : 'top',
+      horizontalPosition : 'right'
     });
   }
 
