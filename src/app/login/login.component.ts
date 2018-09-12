@@ -3,7 +3,7 @@ import {FormControl, FormGroupDirective, Validators} from '@angular/forms';
 import {User} from '../model/user.model';
 import {Router, RouterLinkActive} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
-import {CookieService} from '../../../node_modules/ngx-cookie-service';
+import {CookieService} from "ngx-cookie-service";
 
 
 @Component({
