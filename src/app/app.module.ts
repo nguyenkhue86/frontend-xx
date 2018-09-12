@@ -8,11 +8,19 @@ import {LoginComponent} from './login/login.component';
 import {MainComponent} from './main/main.component';
 import {ListComponent} from './main/data/list/list.component';
 import {CaptureComponent} from './main/data/capture/capture.component';
-import {MatButtonModule, MatIconModule, MatListModule, MatMenuModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatFormFieldModule,
+  MatIconModule, MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatStepperModule
+} from '@angular/material';
 import {MenuComponent} from './main/menu/menu.component';
 import {CookieService} from "ngx-cookie-service";
 import {DataService} from './main/data/data.service';
 import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from "@angular/forms";
 
 const routes: Routes = [
   { path: '',
@@ -49,11 +57,15 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
+    ReactiveFormsModule,
     LoginModule,
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
     MatListModule,
+    MatStepperModule,
+    MatInputModule,
+    MatFormFieldModule,
     HttpClientModule
   ],
   providers: [CookieService,DataService],
