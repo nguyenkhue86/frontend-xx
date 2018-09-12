@@ -2,15 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {LoginModule} from "./login/login.module";
-import {RouterModule, Routes} from "@angular/router";
-import {LoginComponent} from "./login/login.component";
-import {MainComponent} from "./main/main.component";
+import {LoginModule} from './login/login.module';
+import {RouterModule, Routes} from '@angular/router';
+import {LoginComponent} from './login/login.component';
+import {MainComponent} from './main/main.component';
 import {ListComponent} from './main/data/list/list.component';
 import {CaptureComponent} from './main/data/capture/capture.component';
 import {MatButtonModule, MatIconModule, MatListModule, MatMenuModule} from '@angular/material';
 import {MenuComponent} from './main/menu/menu.component';
 import {CookieService} from "ngx-cookie-service";
+import {DataService} from './main/data/data.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const routes: Routes = [
   { path: '',
@@ -51,9 +53,10 @@ const routes: Routes = [
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule
   ],
-  providers: [CookieService],
+  providers: [CookieService,DataService],
   bootstrap: [
     AppComponent
   ]
