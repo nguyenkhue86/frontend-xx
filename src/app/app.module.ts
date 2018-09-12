@@ -10,6 +10,7 @@ import {ListComponent} from './main/data/list/list.component';
 import {CaptureComponent} from './main/data/capture/capture.component';
 import {MatButtonModule, MatIconModule, MatListModule, MatMenuModule} from '@angular/material';
 import {MenuComponent} from './main/menu/menu.component';
+import {CookieService} from "ngx-cookie-service";
 
 const routes: Routes = [
   { path: '',
@@ -52,7 +53,7 @@ const routes: Routes = [
     MatIconModule,
     MatListModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [
     AppComponent
   ]

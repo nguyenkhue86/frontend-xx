@@ -2,16 +2,117 @@
   {
     "id":1,
     "img":"/src/assets/images/product_image/bh.jpeg",
-    "desc":"Bound Hunter"
+    "desc":"Bounty Hunter"
   },
   {
     "id":2,
     "img":"/src/assets/images/product_image/bh.jpeg",
-    "desc":"Bound Hunter"
+    "desc":"Bounty Hunter"
   },
   {
     "id":3,
-    "img":"/src/assets/images/product_image/sniper.jpeg",
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Sniper"
+  },
+  {
+    "id":4,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Bounty Hunter"
+  },
+  {
+    "id":5,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Sniper"
+  },
+  {
+    "id":6,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Bounty Hunter"
+  },
+  {
+    "id":7,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Sniper"
+  },
+  {
+    "id":8,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Bounty Hunter"
+  },
+  {
+    "id":9,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Sniper"
+  },
+  {
+    "id":10,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Bounty Hunter"
+  },
+  {
+    "id":11,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Sniper"
+  },
+  {
+    "id":12,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Bounty Hunter"
+  },
+  {
+    "id":13,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Sniper"
+  },
+  {
+    "id":14,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Bounty Hunter"
+  },
+  {
+    "id":15,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Sniper"
+  },
+  {
+    "id":16,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Bounty Hunter"
+  },
+  {
+    "id":17,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Sniper"
+  },
+  {
+    "id":18,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Bounty Hunter"
+  },
+  {
+    "id":19,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Sniper"
+  },
+  {
+    "id":20,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Bounty Hunter"
+  },
+  {
+    "id":21,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Sniper"
+  },
+  {
+    "id":22,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Bounty Hunter"
+  },
+  {
+    "id":23,
+    "img":"/src/assets/images/product_image/bh.jpeg",
     "desc":"Sniper"
   }
+
 ]
