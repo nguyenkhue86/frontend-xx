@@ -1,0 +1,17 @@
+[
+  {
+    "id":1,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Bound Hunter"
+  },
+  {
+    "id":2,
+    "img":"/src/assets/images/product_image/bh.jpeg",
+    "desc":"Bound Hunter"
+  },
+  {
+    "id":3,
+    "img":"/src/assets/images/product_image/sniper.jpeg",
+    "desc":"Sniper"
+  }
+]
