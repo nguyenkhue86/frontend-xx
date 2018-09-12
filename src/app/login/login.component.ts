@@ -3,6 +3,7 @@ import {FormControl, FormGroupDirective, Validators} from '@angular/forms';
 import {User} from '../model/user.model';
 import {Router, RouterLinkActive} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
+import {CookieService} from '../../../node_modules/ngx-cookie-service';
 
 
 @Component({
@@ -57,12 +58,12 @@ export class LoginComponent implements OnInit {
     for(let i =0; i< this.Users.length; i++) {
       if ( username === this.Users[i].userName && password === this.Users[i].password ) {
         this.cookieService.set('username',username);
-        this.openSnackBar("Success");
+        this.openSnackBar('Success');
         this.route.navigate(['/home']);
         return;
       }
     }
-      this.openSnackBar("Fail");
+      this.openSnackBar('Fail');
 
 
   }
