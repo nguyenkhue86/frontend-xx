@@ -22,14 +22,14 @@
 .content .item {
   background: aliceblue;
   padding: 0.3em;
-  width: 20%;
   margin: 0 1em 1em 0;
-  max-width: 200px;
+  width: 24%;
 }
 .content .item:hover {
-  border: 0.1em lime solid;
+  border: 0.5px lime solid;
 }
 .item .img_box{
+  padding: 0.5em;
   width: 100%;
   overflow: hidden;
   text-align: center;
@@ -43,27 +43,35 @@
   font-weight: bold;
   padding: 0.2em;
 }
-@media screen and (max-width: 1024px) {
+.btn-close{
+  border: 0;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background: #ffffff;
+  cursor: pointer;
+}
+@media screen and (max-width: 1280px) {
   .content .item {
     background: aliceblue;
     padding: 0.3em;
-    width: 30%;
     margin: 0 1em 1em 0;
-    max-width: 200px;
+    width: 30%;
   }
 }
-@media screen and (max-width: 1024px) {
-  .content {
-    display: flex;
-    padding: 1em;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+@media screen and (max-width: 768px) {
   .content .item {
     background: aliceblue;
     padding: 0.3em;
-    width: 90%;
     margin: 0 1em 1em 0;
-    max-width: 200px;
+    width: 46%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .content .item {
+    background: aliceblue;
+    padding: 0.3em;
+    margin: 0 1em 1em 0;
+    width: 100%;
   }
 }

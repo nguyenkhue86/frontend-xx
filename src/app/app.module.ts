@@ -6,7 +6,7 @@ import {LoginModule} from './login/login.module';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {MainComponent} from './main/main.component';
-import {ListComponent} from './main/data/list/list.component';
+import {DialogComponent, ListComponent} from './main/data/list/list.component';
 import {CaptureComponent} from './main/data/capture/capture.component';
 import {
   MatButtonModule,
@@ -16,7 +16,7 @@ import {
   MatListModule,
   MatMenuModule,
   MatStepperModule,
-  MatNativeDateModule
+  MatNativeDateModule, MatCardModule, MatDialogModule
 } from '@angular/material';
 import {DataService} from './main/data/data.service';
 import {CookieService} from "ngx-cookie-service";
@@ -59,12 +59,14 @@ const routes: Routes = [
   }
 ];
 @NgModule({
+  entryComponents:[ListComponent,DialogComponent],
   declarations: [
     AppComponent,
     MainComponent,
     ListComponent,
     CaptureComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DialogComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -81,7 +83,9 @@ const routes: Routes = [
     MatSidenavModule,
     MatStepperModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatCardModule,
+    MatDialogModule
   ],
   providers: [CookieService, DataService],
   bootstrap: [

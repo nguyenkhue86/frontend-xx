@@ -1,7 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
-import {e} from "@angular/core/src/render3";
 
 @Component({
   selector: 'app-main',
@@ -31,7 +30,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.innerWidth = window.innerWidth;
-    if (this.innerWidth < 720) {
+    if (this.innerWidth < 769) {
       this.status_nav = false;
     } else {
       this.status_nav =true;

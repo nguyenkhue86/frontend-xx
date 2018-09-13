@@ -29,7 +29,7 @@
     </mat-sidenav>
     <mat-sidenav-content class="mat-sidenav-content">
       <div class="content_box">
-        <div class="menu-h">
+        <div class="menu-h" *ngIf="!status_nav">
           <mat-icon (click)="sidenav.toggle()" style="cursor: pointer">menu</mat-icon>
         </div>
         <router-outlet></router-outlet>
