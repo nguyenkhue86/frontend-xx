@@ -6,24 +6,23 @@
   <mat-horizontal-stepper [linear]="true" #stepper>
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" >
-        <ng-template matStepLabel>Fill out your name</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-        </mat-form-field>
+        <ng-template matStepLabel>Upload your image</ng-template>
+          <img [src]="url" height="200"> <br/>
+          <input placeholder="Image file's url" type="file" formControlName="firstCtrl" (change)="onSelectFile($event)"  required>
         <div>
-          <button type="button" mat-button matStepperNext>Next</button>
+          <button class="btn btnNext" type="button" mat-stroked-button color="accent" matStepperNext  >Next</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup" >
-        <ng-template matStepLabel>Fill out your address</ng-template>
+        <ng-template matStepLabel>Fill out description of image</ng-template>
         <mat-form-field>
-          <input matInput placeholder="Address" formControlName="secondCtrl" required>
+          <input matInput placeholder="Description"  formControlName="secondCtrl" required>
         </mat-form-field>
         <div>
-          <button type="button" mat-button matStepperPrevious>Back</button>
-          <button type="button" mat-button matStepperNext>Next</button>
+          <button type="button" class="btn btnBack" color="accent" mat-stroked-button matStepperPrevious>Back</button>
+          <button type="button" class="btn btnNext" color="accent" mat-stroked-button matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
@@ -31,8 +30,9 @@
       <ng-template matStepLabel>Done</ng-template>
       You are now done.
       <div>
-        <button type="button" mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button type="button" class="btn btnBack" color="accent" mat-stroked-button matStepperPrevious>Back</button>
+        <button type="button" class="btn btnUp" color="accent" mat-raised-button color="primary" (click)="uploadImage()" >Upload</button>
+        <button mat-raised-button class="btn btnNext" color="accent" (click)="stepper.reset()">Reset</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

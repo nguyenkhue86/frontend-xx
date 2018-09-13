@@ -8,7 +8,6 @@ import {LoginComponent} from './login/login.component';
 import {MainComponent} from './main/main.component';
 import {ListComponent} from './main/data/list/list.component';
 import {CaptureComponent} from './main/data/capture/capture.component';
-import {CookieService} from 'ngx-cookie-service';
 import {
   MatButtonModule,
   MatSidenavModule,
@@ -20,6 +19,7 @@ import {
   MatNativeDateModule
 } from '@angular/material';
 import {DataService} from './main/data/data.service';
+import {CookieService} from "ngx-cookie-service";
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
