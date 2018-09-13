@@ -3,7 +3,7 @@
 }
 .container {
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 .title_box{
   margin-top: 2em;
@@ -15,8 +15,9 @@
 }
 .content {
   display: flex;
-  padding: 1em;
+  padding: 1.5em;
   flex-wrap: wrap;
+  overflow-y:auto ;
 }
 .content .item {
   background: aliceblue;
@@ -47,6 +48,21 @@
     background: aliceblue;
     padding: 0.3em;
     width: 30%;
+    margin: 0 1em 1em 0;
+    max-width: 200px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .content {
+    display: flex;
+    padding: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .content .item {
+    background: aliceblue;
+    padding: 0.3em;
+    width: 90%;
     margin: 0 1em 1em 0;
     max-width: 200px;
   }

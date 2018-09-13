@@ -8,11 +8,13 @@ import {LoginComponent} from './login/login.component';
 import {MainComponent} from './main/main.component';
 import {ListComponent} from './main/data/list/list.component';
 import {CaptureComponent} from './main/data/capture/capture.component';
-import {MatButtonModule, MatIconModule, MatListModule, MatMenuModule} from '@angular/material';
-import {MenuComponent} from './main/menu/menu.component';
-import {CookieService} from "ngx-cookie-service";
+import {MatButtonModule, MatIconModule, MatListModule, MatMenuModule, MatNativeDateModule, MatSidenavModule} from '@angular/material';
+import {CookieService} from 'ngx-cookie-service';
 import {DataService} from './main/data/data.service';
 import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '',
@@ -22,6 +24,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'home',
+    redirectTo: '/home/list',
+    pathMatch: 'full'
   },
   {
     path: 'home',
@@ -36,27 +43,35 @@ const routes: Routes = [
         component: CaptureComponent
       }
     ]
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    MenuComponent,
     ListComponent,
-    CaptureComponent
+    CaptureComponent,
+    PageNotFoundComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
     BrowserModule,
     LoginModule,
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatSidenavModule
   ],
-  providers: [CookieService,DataService],
+  providers: [CookieService, DataService],
   bootstrap: [
     AppComponent
   ]
