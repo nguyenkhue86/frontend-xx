@@ -5,7 +5,6 @@
   <div class="content">
     <div class="item" *ngFor="let item of limg">
       <mat-card class="example-card">
-        <button class="btn-close" (click)="openDialog()"><mat-icon>close</mat-icon></button>
         <button mat-icon-button class="btn-close" [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
         </button>

@@ -1,6 +1,7 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
+import {MatSidenav} from "@angular/material";
 
 @Component({
   selector: 'app-main',
@@ -10,6 +11,9 @@ import {CookieService} from 'ngx-cookie-service';
 export class MainComponent implements OnInit {
 
   status_nav: Boolean;
+  checkMode = 'side';
+
+  @ViewChild('side') side: MatSidenav;
 
   constructor(private router: Router,
               private cookieService: CookieService) {  }
@@ -26,19 +30,27 @@ export class MainComponent implements OnInit {
     this.userName = '';
     this.router.navigate(['login']);
   }
+
+  close()  {
+    this.side.close();
+  }
   public innerWidth: any;
 
   ngOnInit() {
     this.innerWidth = window.innerWidth;
     if (this.innerWidth < 769) {
       this.status_nav = false;
+      this.checkMode = 'over';
     } else {
       this.status_nav =true;
+      this.checkMode = 'side';
     }
   }
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.innerWidth = window.innerWidth;
   }
+
+
 
 }
