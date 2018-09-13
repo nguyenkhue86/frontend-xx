@@ -24,10 +24,11 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
   }
-  openDialog(): void {
+  openDialog(item: Data): void {
+    console.log(item);
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '310px',
-      data: {}
+      data: item
     });
 
     dialogRef.afterClosed().subscribe(result => {
