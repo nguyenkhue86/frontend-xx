@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container-capture">
   <div class="title_box">
     <h3 class="title">Add/Edit Your Image</h3>
   </div>
 
-  <mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-horizontal-stepper [linear]="true" class="mat-h-stepper" #stepper>
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" >
         <ng-template matStepLabel>Upload your image</ng-template>

@@ -1,3 +1,10 @@
+.container-capture {
+  width: 100%;
+}
+.mat-h-stepper {
+  height: 100%;
+  background-color: #fafafa;
+}
 .title_box{
   margin-top: 2em;
   border-bottom:1px #777777 solid ;

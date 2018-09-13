@@ -1,6 +1,6 @@
 <div #aaa class="container">
-  <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side">
+  <mat-sidenav-container class="example-container mat-sidenav-container">
+    <mat-sidenav opened={{status_nav}} #sidenav mode="side">
       <div #menuClick class="app-menu">
         <div class="user">
           <div class="user-group">
@@ -27,7 +27,7 @@
         </mat-list>
       </div>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content class="mat-sidenav-content">
       <div class="content_box">
         <div class="menu-h">
           <mat-icon (click)="sidenav.toggle()" style="cursor: pointer">menu</mat-icon>

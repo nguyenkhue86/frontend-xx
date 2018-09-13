@@ -9,6 +9,7 @@
   height: 100vh;
 }
 .content_box{
+  width: 100%;
 }
 .user {
   padding: 1.5em;
@@ -43,6 +44,13 @@
   z-index: 99;
   text-align: right;
   padding: 0.5em 1.5em 0.5em 0.5em;
+}
+
+.mat-sidenav-container {
+  width: 100%;
+}
+
+.mat-sidenav-content {
 }
 @media screen and(max-width: 480px) {
 
