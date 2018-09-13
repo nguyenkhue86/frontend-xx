@@ -8,8 +8,17 @@ import {LoginComponent} from './login/login.component';
 import {MainComponent} from './main/main.component';
 import {ListComponent} from './main/data/list/list.component';
 import {CaptureComponent} from './main/data/capture/capture.component';
-import {MatButtonModule, MatIconModule, MatListModule, MatMenuModule, MatNativeDateModule, MatSidenavModule} from '@angular/material';
 import {CookieService} from 'ngx-cookie-service';
+import {
+  MatButtonModule,
+  MatSidenavModule,
+  MatFormFieldModule,
+  MatIconModule, MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatStepperModule,
+  MatNativeDateModule
+} from '@angular/material';
 import {DataService} from './main/data/data.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -69,7 +78,10 @@ const routes: Routes = [
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatStepperModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [CookieService, DataService],
   bootstrap: [
