@@ -1,10 +1,25 @@
 .mat-form-field {
   width: 100%;
+  margin-top: 1em;
 }
 .mat-dialog-actions {
   justify-content: center;
 }
 .mat-dialog-title {
+  text-align: center;
+  font-weight: bold;
+}
+.div-close {
+  text-align: right;
+}
+
+.btn-close {
+  border: 0;
+  background: white;
+  cursor: pointer;
+}
+
+.img-box {
   text-align: center;
 }
 

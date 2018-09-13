@@ -1,9 +1,18 @@
 <div class="dialog" >
+  <div class="div-close">
+    <button matSuffix mat-icon-button class="btn-close" mat-raised-button (click)="onNoClick()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
   <h1 mat-dialog-title class="mat-dialog-title">Edit your image</h1>
   <div mat-dialog-content>
-    <input type="file" value={{data.img}}>
+    <div class="img-box">
+      <img src={{data.img}}>
+    </div>
+    <input type="file" >
     <mat-form-field class="mat-form-field">
-      <input matInput placeholder="description">
+      <mat-label class="mat-label">Description</mat-label>
+      <input matInput value={{data.desc}}>
     </mat-form-field>
   </div>
   <div mat-dialog-actions class="mat-dialog-actions">
