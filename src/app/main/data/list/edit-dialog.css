@@ -1,0 +1,15 @@
+.mat-form-field {
+  width: 100%;
+}
+.mat-dialog-actions {
+  justify-content: center;
+}
+.mat-dialog-title {
+  text-align: center;
+}
+
+.btn {
+  margin-right: 10px;
+}
+
+

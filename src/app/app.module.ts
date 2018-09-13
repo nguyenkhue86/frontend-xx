@@ -6,7 +6,7 @@ import {LoginModule} from './login/login.module';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {MainComponent} from './main/main.component';
-import {DialogComponent, ListComponent} from './main/data/list/list.component';
+import {DialogComponent, ListComponent, DeleteDialogComponent} from './main/data/list/list.component';
 import {CaptureComponent} from './main/data/capture/capture.component';
 import {
   MatButtonModule,
@@ -59,14 +59,15 @@ const routes: Routes = [
   }
 ];
 @NgModule({
-  entryComponents:[ListComponent,DialogComponent],
+  entryComponents:[ListComponent,DialogComponent,DeleteDialogComponent],
   declarations: [
     AppComponent,
     MainComponent,
     ListComponent,
     CaptureComponent,
     PageNotFoundComponent,
-    DialogComponent
+    DialogComponent,
+    DeleteDialogComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

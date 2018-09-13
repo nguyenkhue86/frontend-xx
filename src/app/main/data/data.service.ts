@@ -15,10 +15,13 @@ const url_base = API_BASE;
 })
 export class DataService {
 
+  private dataUrl = 'api/data';
+
   constructor(private http: HttpClient) { }
   getAll(): Observable<Data[]> {
     return this.http.get<Data[]>(url_base + 'data.json');
   }
+
   create(data: Data) {
     return data;
   }
@@ -28,4 +31,5 @@ export class DataService {
   delete(id: number) {
     return id;
   }
+
 }

@@ -5,3 +5,10 @@
   margin: 0;
   box-sizing: border-box;
 }
+.mat-raised-button.mat-primary {
+  background: #50a24d;
+}
+
+.mat-raised-button.mat-accent {
+  background: #a22932;
+}

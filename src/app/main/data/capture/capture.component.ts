@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 
@@ -10,12 +10,21 @@ import {MatSnackBar} from '@angular/material';
 export class CaptureComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  public innerWidth: any;
+  checkSize: Boolean;
 
 
   constructor(private _formBuilder: FormBuilder,
               public snackBar: MatSnackBar) {}
 
   ngOnInit() {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth < 769) {
+      this.checkSize = false;
+    } else {
+      this.checkSize =true;
+    }
+
     this.firstFormGroup = this._formBuilder.group({
         firstCtrl : ['',Validators.required]
     });
@@ -37,10 +46,13 @@ export class CaptureComponent implements OnInit {
     });
   }
 
-   url: string = '';
-  onSelectFile(event) {
-    console.log(event);
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
   }
+
+
+
 
 
 }
