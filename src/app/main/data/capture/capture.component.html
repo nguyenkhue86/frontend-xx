@@ -7,7 +7,12 @@
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" >
         <ng-template matStepLabel>Upload your image</ng-template>
-          <input type="file" formControlName="firstCtrl" (change)="upload($event)"  required>
+          <input type="file"  formControlName="firstCtrl" (change)="upload($event)"  accept=".jpg,.png,.jpeg" required>
+        <br>
+        <mat-form-field class="mat-form-field">
+          <mat-label>Name</mat-label>
+          <input matInput   formControlName="firstCtrl_1" required>
+        </mat-form-field>
         <div>
           <button class="btn btnNext" type="button" mat-stroked-button color="accent" matStepperNext  >Next</button>
         </div>
@@ -40,7 +45,12 @@
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" >
         <ng-template matStepLabel>Upload your image</ng-template>
-        <input type="file" formControlName="firstCtrl" (change)="upload($event)"   required>
+        <input type="file" formControlName="firstCtrl" (change)="(upload($event))"   required>
+        <br>
+        <mat-form-field class="mat-form-field">
+          <mat-label>Name</mat-label>
+          <input matInput   formControlName="firstCtrl_1" required>
+        </mat-form-field>
         <div>
           <button class="btn btnNext" type="button" mat-stroked-button color="accent" matStepperNext  >Next</button>
         </div>

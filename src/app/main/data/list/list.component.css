@@ -51,6 +51,10 @@
   background: #ffffff;
   cursor: pointer;
 }
+.mat-card-subtitle {
+  padding-top: 1em;
+}
+
 @media screen and (max-width: 1280px) {
   .content .item {
     background: aliceblue;

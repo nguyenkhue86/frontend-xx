@@ -1,1 +1,1 @@
-export const API_BASE = '/src/assets/database_json/';
+export const API_BASE = 'http://localhost:8080/images';

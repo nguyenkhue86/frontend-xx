@@ -24,6 +24,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+
 
 const routes: Routes = [
   { path: '',
@@ -86,7 +89,16 @@ const routes: Routes = [
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyD-DGpobFgJJgcUTk3z9ltBWr-AlZpyMOU",
+      authDomain: "angular-demo-e31f5.firebaseapp.com",
+      databaseURL: "https://angular-demo-e31f5.firebaseio.com",
+      projectId: "angular-demo-e31f5",
+      storageBucket: "angular-demo-e31f5.appspot.com",
+      messagingSenderId: "648437194464"
+    }),
+    AngularFireStorageModule
   ],
   providers: [CookieService, DataService],
   bootstrap: [

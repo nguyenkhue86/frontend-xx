@@ -1,6 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
+import {DataService} from "../data.service";
 
 @Component({
   selector: 'app-capture',
@@ -12,10 +13,12 @@ export class CaptureComponent implements OnInit {
   secondFormGroup: FormGroup;
   public innerWidth: any;
   checkSize: Boolean;
+  file: any;
 
 
   constructor(private _formBuilder: FormBuilder,
-              public snackBar: MatSnackBar) {}
+              public snackBar: MatSnackBar,
+              private dataService: DataService) {}
 
   ngOnInit() {
     this.innerWidth = window.innerWidth;
@@ -25,8 +28,11 @@ export class CaptureComponent implements OnInit {
       this.checkSize =true;
     }
 
+
+
     this.firstFormGroup = this._formBuilder.group({
-        firstCtrl : ['',Validators.required]
+        firstCtrl : ['',Validators.required],
+        firstCtrl_1: ['',Validators.required]
     });
 
     this.secondFormGroup = this._formBuilder.group({
@@ -36,11 +42,13 @@ export class CaptureComponent implements OnInit {
 
   uploadImage() {
     this.openSnackBar('Your image uploaded');
-
+    this.dataService.upload(this.file,this.firstFormGroup.value.firstCtrl_1,this.secondFormGroup.value.secondCtrl);
   }
-  upload(e: any) {
-    const file: File = e.target.files[0];
-    console.log('file name :',file);
+
+
+
+  upload(e) {
+    this.file = e;
   }
 
   openSnackBar(message: string) {
