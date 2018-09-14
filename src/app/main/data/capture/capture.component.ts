@@ -38,6 +38,11 @@ export class CaptureComponent implements OnInit {
     this.openSnackBar('Your image uploaded');
 
   }
+  upload(e: any) {
+    const file: File = e.target.files[0];
+    console.log('file name :',file);
+  }
+
   openSnackBar(message: string) {
     this.snackBar.open(message, 'Done', {
       duration: 2000,
