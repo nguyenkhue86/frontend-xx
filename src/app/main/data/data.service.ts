@@ -28,31 +28,44 @@ export class DataService {
     return this.http.get<Data[]>(url_base);
   }
 
-  create(data: Data) {
-    return data;
-  }
-  update(data: Data) {
-    return data;
-  }
   delete(id: number) {
-    return id;
+    this.http.delete(url_base+"/"+id,httpOptions).subscribe(data=>console.log(data));
+
   }
-  url: string;
    upload(file, name, desc) {
+       const id = Math.random().toString(36).substring(2);
+       this.ref = this.afStorage.ref(id);
+       this.task = this.ref.put(file.target.files[0]);
+       this.task.snapshotChanges().pipe(
+         finalize(() => {
+           this.ref.getDownloadURL().subscribe(url => {
+             this.http.post(url_base,{"name":name,"img":url,"description":desc},httpOptions).subscribe(data=>console.log(data));
+           });
+         })
+       ).subscribe();
 
-    const id = Math.random().toString(36).substring(2);
-    this.ref = this.afStorage.ref(id);
-    this.task = this.ref.put(file.target.files[0]);
+   }
 
-    this.task.snapshotChanges().pipe(
-      finalize(() => {
-        this.ref.getDownloadURL().subscribe(url => {
-          console.log(name,url,desc);
-          this.http.post(url_base,{"name":name,"img":url,"description":desc},httpOptions).subscribe(data=>console.log(data));
-        });
-      })
-    ).subscribe();
-    // return this.ref.getDownloadURL();
-  }
+   edit(id, file, name, desc) {
+     if (file instanceof String != false) {
+       const idr = Math.random().toString(36).substring(2);
+       this.ref = this.afStorage.ref(idr);
+       this.task = this.ref.put(file.target.files[0]);
+
+       this.task.snapshotChanges().pipe(
+         finalize(() => {
+           this.ref.getDownloadURL().subscribe(url => {
+             this.http.put(url_base+"/"+id,{"id":id,"name":name,"img":url,"description":desc},httpOptions).subscribe(data=>console.log(data));
+           });
+         })
+       ).subscribe();
+     } else {
+       this.http.put(url_base+"/"+id,{"id":id,"name":name,"img":file,"description":desc},httpOptions).subscribe(data=>console.log(data));
+     }
+
+   }
+
+
+
 
 }

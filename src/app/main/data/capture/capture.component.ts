@@ -1,6 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {MatSnackBar} from '@angular/material';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatSnackBar, MatStepper} from '@angular/material';
 import {DataService} from "../data.service";
 
 @Component({
@@ -40,9 +40,15 @@ export class CaptureComponent implements OnInit {
     });
   }
 
-  uploadImage() {
-    this.openSnackBar('Your image uploaded');
-    this.dataService.upload(this.file,this.firstFormGroup.value.firstCtrl_1,this.secondFormGroup.value.secondCtrl);
+  uploadImage(step: MatStepper) {
+    try {
+      this.dataService.upload(this.file,this.firstFormGroup.value.firstCtrl_1,this.secondFormGroup.value.secondCtrl);
+      this.openSnackBar('Your image has been uploaded');
+      step.reset();
+    } catch (e) {
+      console.log(e);
+      this.openSnackBar('Your image cant be uploaded');
+    }
   }
 
 

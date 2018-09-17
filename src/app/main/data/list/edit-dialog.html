@@ -9,14 +9,18 @@
     <div class="img-box">
       <img src={{data.img}}>
     </div>
-    <input type="file" >
+    <input type="file" (change)="upload($event)"  accept=".jpg,.png,.jpeg"  >
+    <mat-form-field class="mat-form-field">
+      <mat-label class="mat-label">Name</mat-label>
+      <input matInput value={{data.name}} [formControl]="nameCtrl" >
+    </mat-form-field>
     <mat-form-field class="mat-form-field">
       <mat-label class="mat-label">Description</mat-label>
-      <input matInput value={{data.desc}}>
+      <input matInput value={{data.description}} [formControl]="desCtrl">
     </mat-form-field>
   </div>
   <div mat-dialog-actions class="mat-dialog-actions">
     <button class="btn cancel" mat-raised-button (click)="onNoClick()">Cancel</button>
-    <button class="btn ok"  mat-raised-button color="primary" >Ok</button>
+    <button class="btn ok"  mat-raised-button color="primary" (click)="onSubmitClick()" >Ok</button>
   </div>
 </div>

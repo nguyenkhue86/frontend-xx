@@ -35,7 +35,7 @@
       You are now done.
       <div>
         <button type="button" class="btn btnBack" color="accent" mat-stroked-button matStepperPrevious>Back</button>
-        <button type="button" class="btn btnUp" color="accent" mat-raised-button color="primary" (click)="uploadImage()" >Upload</button>
+        <button type="button" class="btn btnUp" color="accent" mat-raised-button color="primary" (click)="uploadImage(stepper)" >Upload</button>
         <button mat-raised-button class="btn btnNext" color="accent" (click)="stepper.reset()">Reset</button>
       </div>
     </mat-step>
@@ -73,7 +73,7 @@
       You are now done.
       <div >
         <button type="button" class="btn btnBack" color="accent" mat-stroked-button matStepperPrevious>Back</button>
-        <button type="button" class="btn btnUp" color="accent" mat-raised-button color="primary" (click)="uploadImage()" >Upload</button>
+        <button type="button" class="btn btnUp" color="accent" mat-raised-button color="primary" (click)="uploadImage(stepper)" >Upload</button>
         <button mat-raised-button class="btn btnNext" color="accent" (click)="stepper.reset()">Reset</button>
       </div>
     </mat-step>
