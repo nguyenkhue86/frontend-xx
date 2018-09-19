@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from "@angular/router";
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
 import {Observable} from "rxjs";
 import {AuthenticateService} from "./authenticate.service";
 
@@ -8,7 +8,7 @@ import {AuthenticateService} from "./authenticate.service";
 })
 export class AuthenticateGuardService implements CanActivate{
 
-  constructor(private authenService: AuthenticateService) { }
+  constructor(private authenService: AuthenticateService,private  router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> |  boolean {
     if (this.authenService.isLoggedIn()) {
@@ -17,6 +17,7 @@ export class AuthenticateGuardService implements CanActivate{
     }
     else {
       window.alert("You don't have permission to view this page");
+      this.router.navigate(['/login']);
       return false;
     }
   }
