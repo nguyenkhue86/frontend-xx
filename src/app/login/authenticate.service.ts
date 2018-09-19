@@ -10,10 +10,7 @@ export class AuthenticateService {
   constructor(private cookieService: CookieService) {}
 
   isLoggedIn() {
-      if (this.cookieService.get('username').length !== 0) {
-        return true;
-      }
-      return false;
+      return this.cookieService.get('username').length !== 0;
   }
 }
 
