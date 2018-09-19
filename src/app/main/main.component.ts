@@ -26,7 +26,7 @@ export class MainComponent implements OnInit {
     this.router.navigate(['home/capture']);
   }
   toLogout() {
-    this.cookieService.deleteAll();
+    this.cookieService.deleteAll('../');
     this.userName = '';
     this.router.navigate(['login']);
   }

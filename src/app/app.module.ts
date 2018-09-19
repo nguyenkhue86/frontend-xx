@@ -26,6 +26,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import {AuthenticateService} from "./login/authenticate.service";
+import {AuthenticateGuardService} from "./login/authenticate-guard.service";
 
 
 const routes: Routes = [
@@ -45,6 +47,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: MainComponent,
+    canActivate: [AuthenticateGuardService],
     children: [
       {
         path: 'list',
@@ -100,7 +103,7 @@ const routes: Routes = [
     }),
     AngularFireStorageModule
   ],
-  providers: [CookieService, DataService],
+  providers: [CookieService, DataService, AuthenticateService, AuthenticateGuardService],
   bootstrap: [
     AppComponent
   ]
