@@ -12,7 +12,6 @@ export class AuthenticateGuardService implements CanActivate{
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> |  boolean {
     if (this.authenService.isLoggedIn()) {
-      console.log(this.authenService.isLoggedIn());
       return true;
     }
     else {

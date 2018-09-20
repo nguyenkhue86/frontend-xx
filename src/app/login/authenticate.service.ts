@@ -3,6 +3,8 @@ import {CookieService} from "ngx-cookie-service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {API_LOGIN} from "../model/api_base";
 import {User} from "../model/user.model";
+import {map} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 
 const httpOptions = {
@@ -17,41 +19,36 @@ const url_base = API_LOGIN;
 })
 export class AuthenticateService {
 
-  users: User[];
+
 
   constructor(private cookieService: CookieService,
               private  http: HttpClient) {
-    this.users = [];
   }
+  getAll(): Observable<User[]> {
+    return this.http.get<User[]>(url_base);
 
-  getAll() {
-    return new Promise((resolve) => {
-      this.http.get<User[]>(url_base).toPromise().then(res => {
-        this.users = res.map(item => {
-          return new User(
-            item.userName,
-            item.password
-          )
-        });
-        resolve(this.users);
-      });
-    });
   }
 
   isLoggedIn() {
-
       return this.cookieService.get('username').length !== 0;
   }
 
-  async logIn(username: string, password: string) {
-    await  this.getAll().then();
-    for (let i = 0; i< this.users.length; i++) {
-      if (username === this.users[i].userName && btoa(password) === this.users[i].password) {
-        return true;
-      }
-    }
-    return false;
-
+  logIn(username: string, password: string) {
+    this.getAll().subscribe(res => {
+      console.log(res)
+      this.users = res.map(item => {
+              return new User(
+                item.userName,
+                item.password
+              )})
+        for (let i = 0; i< this.users.length; i++) {
+          if (username === this.users[i].userName && btoa(password) === this.users[i].password) {
+            console.log('g');
+            return true;
+          }
+        }
+      return false;
+    });
   }
 
 }

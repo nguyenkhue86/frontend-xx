@@ -41,13 +41,24 @@ export class LoginComponent implements OnInit {
   ]);
 
   login(username: string, password: string) {
-    if (this.authenService.logIn(username,password)) {
-      this.cookieService.set('username',username);
-      this.openSnackBar('Success');
-      this.route.navigate(['/home']);
-    } else {
+    let users: User[] =[];
+
+    this.authenService.getAll().subscribe(res => {
+      users = res.map(item => {
+        return new User(
+          item.userName,
+          item.password
+        )});
+      for (let i = 0; i< users.length; i++) {
+        if (username === users[i].userName && btoa(password) === users[i].password) {
+          this.cookieService.set('username',username);
+          this.openSnackBar('Success');
+          this.route.navigate(['/home']);
+        }
+      }
       this.openSnackBar('Fail');
-    }
+    });
+
   }
 
   openSnackBar(message: string) {
