@@ -4,6 +4,7 @@ import {User} from '../model/user.model';
 import {Router, RouterLinkActive} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 import {CookieService} from "ngx-cookie-service";
+import {AuthenticateService} from "./authenticate.service";
 
 
 @Component({
@@ -12,28 +13,15 @@ import {CookieService} from "ngx-cookie-service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  Users: User[] = [
-    {
-      userName: 'nhvi',
-      password: '123'
-    },
-    {
-      userName: 'ttnguyen',
-      password: '456'
-    },
-    {
-      userName: 'ntcong',
-      password: '123'
-    }
-  ];
-
 
   visibility = 'visibility_off';
   password = 'password';
 
   constructor(private route: Router,
+              private authenService: AuthenticateService,
               private cookieService: CookieService,
               public snackBar: MatSnackBar) { }
+
   showPass(){
     if(this.visibility === 'visibility_off') {
       this.visibility = 'visibility';
@@ -52,20 +40,14 @@ export class LoginComponent implements OnInit {
     Validators.required
   ]);
 
-
   login(username: string, password: string) {
-
-    for(let i =0; i< this.Users.length; i++) {
-      if ( username === this.Users[i].userName && password === this.Users[i].password ) {
-        this.cookieService.set('username',username);
-        this.openSnackBar('Success');
-        this.route.navigate(['/home']);
-        return;
-      }
-    }
+    if (this.authenService.logIn(username,password)) {
+      this.cookieService.set('username',username);
+      this.openSnackBar('Success');
+      this.route.navigate(['/home']);
+    } else {
       this.openSnackBar('Fail');
-
-
+    }
   }
 
   openSnackBar(message: string) {
@@ -75,7 +57,6 @@ export class LoginComponent implements OnInit {
       horizontalPosition : 'right'
     });
   }
-
 
   ngOnInit() {
   }

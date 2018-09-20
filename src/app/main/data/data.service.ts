@@ -5,7 +5,6 @@ import {Observable} from 'rxjs';
 import {Data} from '../../model/data.model';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from 'angularfire2/storage';
 import {finalize} from "rxjs/operators";
-import {d} from "@angular/core/src/render3";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -30,7 +29,6 @@ export class DataService {
 
   delete(id: number) {
     this.http.delete(url_base+"/"+id,httpOptions).subscribe(data=>console.log(data));
-
   }
    upload(file, name, desc) {
        const id = Math.random().toString(36).substring(2);
