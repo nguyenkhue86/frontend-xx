@@ -1,6 +1,6 @@
 export class Data {
   id: number;
   name: string;
-  img: string;
+  url: string;
   description: string;
 }

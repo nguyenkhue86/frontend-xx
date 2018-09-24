@@ -8,11 +8,29 @@
 .title_box{
   margin-top: 2em;
   border-bottom:1px #777777 solid ;
+  display: flex;
+  flex-direction: row;
 }
 .title_box .title{
    font-family: Tahoma, Arial, sans-serif;
    padding: 0 1em;
  }
+.search {
+  width: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 99;
+  text-align: right;
+  margin-right: 5em;
+
+}
+
+.searchTxt {
+  height: 30px;
+
+}
+
 .content {
   display: flex;
   padding: 1.5em;
@@ -33,9 +51,15 @@
   width: 100%;
   overflow: hidden;
   text-align: center;
+  min-height: 350px;
+  max-height: 350px;
+}
+.item .img_box h3 {
+  margin-top: 1em;
 }
 .item .img_box .img {
   max-width: 100%;
+  height: 240px;
 }
 
 .item .desc_box{}
@@ -70,6 +94,16 @@
     margin: 0 1em 1em 0;
     width: 46%;
   }
+  .search {
+    width: 100%;
+    right: 0;
+    position: relative;
+    top: 0;
+    z-index: 99;
+    text-align: right;
+    margin-right: 0;
+
+  }
 }
 @media screen and (max-width: 500px) {
   .content .item {
@@ -77,5 +111,15 @@
     padding: 0.3em;
     margin: 0 1em 1em 0;
     width: 100%;
+  }
+  .search {
+    width: 100%;
+    position: relative;
+    right: 0;
+    top: 0;
+    z-index: 99;
+    text-align: right;
+    margin-right: 0;
+
   }
 }

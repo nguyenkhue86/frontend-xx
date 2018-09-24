@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {API_BASE} from '../../model/api_base';
-import {Observable} from 'rxjs';
 import {Data} from '../../model/data.model';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from 'angularfire2/storage';
 import {finalize} from "rxjs/operators";
 
+import {Observable} from "rxjs";
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -27,8 +27,18 @@ export class DataService {
     return this.http.get<Data[]>(url_base);
   }
 
+  getByName(name: string): Observable<Data[]>  {
+    if (name !== '' && name.length !== 0) {
+      let api = `${url_base}/search?name=${name}`;
+      return this.http.get<Data[]>(api,httpOptions);
+    }
+    else {
+      return this.http.get<Data[]>(url_base);
+    }
+  }
+
   delete(id: number) {
-    this.http.delete(url_base+"/"+id,httpOptions).subscribe(data=>console.log(data));
+    this.http.delete(url_base+"/"+id,httpOptions).subscribe(data=> console.log(data));
   }
    upload(file, name, desc) {
        const id = Math.random().toString(36).substring(2);
@@ -37,7 +47,7 @@ export class DataService {
        this.task.snapshotChanges().pipe(
          finalize(() => {
            this.ref.getDownloadURL().subscribe(url => {
-             this.http.post(url_base,{"name":name,"img":url,"description":desc},httpOptions).subscribe(data=>console.log(data));
+             this.http.post(url_base,{"name":name,"url":url,"description":desc},httpOptions).subscribe(data=>console.log(data));
            });
          })
        ).subscribe();
@@ -45,23 +55,25 @@ export class DataService {
    }
 
    edit(id, file, name, desc) {
-     if (file instanceof String != false) {
+     if (typeof file === "string" ) {
+       this.http.put(url_base+"/"+id,{"id":id,"name":name,"url":file,"description":desc},httpOptions).subscribe(data=>console.log(data));
+     } else {
        const idr = Math.random().toString(36).substring(2);
        this.ref = this.afStorage.ref(idr);
        this.task = this.ref.put(file.target.files[0]);
-
        this.task.snapshotChanges().pipe(
          finalize(() => {
            this.ref.getDownloadURL().subscribe(url => {
-             this.http.put(url_base+"/"+id,{"id":id,"name":name,"img":url,"description":desc},httpOptions).subscribe(data=>console.log(data));
+             this.http.put(url_base+"/"+id,{"id":id,"name":name,"url":url,"description":desc},httpOptions).subscribe(data=>console.log(data));
            });
          })
        ).subscribe();
-     } else {
-       this.http.put(url_base+"/"+id,{"id":id,"name":name,"img":file,"description":desc},httpOptions).subscribe(data=>console.log(data));
+
      }
 
    }
+
+
 
 
 

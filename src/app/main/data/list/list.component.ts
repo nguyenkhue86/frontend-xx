@@ -10,13 +10,26 @@ import {FormControl} from "@angular/forms";
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  limg: Data[];
+  public limg: Data[];
   constructor(private dataService: DataService, public dialog: MatDialog) {
     this.getData();
   }
 
   getData() {
     this.dataService.getAll().subscribe(data => this.limg = data);
+  }
+
+  Reset(e) {
+    if (e.target.value === '') {
+      this.getData();
+    } else {
+      this.doSearch(e.target.value);
+    }
+  }
+
+
+  doSearch(e) {
+    this.dataService.getByName(e).subscribe(data => this.limg = data);
   }
 
   openDeleteDialog(item :Data): void {
@@ -51,6 +64,7 @@ export class DialogComponent {
   flag: Boolean = false;
   nameCtrl = new FormControl();
   desCtrl = new FormControl();
+  loading: Boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
@@ -63,17 +77,23 @@ export class DialogComponent {
     this.dialogRef.close();
   }
 
-  onSubmitClick() {
+  onSubmitClick(){
+    this.loading = true;
     try {
       if (this.flag) {
-        this.dataService.edit(this.data.id,this.file,this.nameCtrl.value == null ? this.data.name : this.nameCtrl.value,this.desCtrl.value == null ? this.data.description :this.desCtrl.value);
+          this.dataService.edit(this.data.id,this.file,this.nameCtrl.value == null ? this.data.name : this.nameCtrl.value,this.desCtrl.value == null ? this.data.description :this.desCtrl.value);
       } else {
-        console.log(this.data.id,this.data.img,this.nameCtrl.value,this.desCtrl.value);
-        this.dataService.edit(this.data.id,this.data.img,this.nameCtrl.value == null ? this.data.name : this.nameCtrl.value,this.desCtrl.value == null ? this.data.description :this.desCtrl.value);
+          this.dataService.edit(this.data.id,this.data.url,this.nameCtrl.value == null ? this.data.name : this.nameCtrl.value,this.desCtrl.value == null ? this.data.description :this.desCtrl.value);
       }
-      this.openSnackBar('Successful');
-      this.dialogRef.close();
-      window.location.reload();
+
+      setTimeout(() =>{
+        this.loading = false;
+        this.openSnackBar('Successful');
+        this.dialogRef.close();
+        window.location.reload();
+      },this.flag === true ? 4000 : 500);
+
+
     } catch (e) {
       console.log(e);
       this.openSnackBar('Failed');

@@ -2,6 +2,8 @@ import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {MatSidenav} from "@angular/material";
+import {ListComponent} from "./data/list/list.component";
+import {DataService} from "./data/data.service";
 
 @Component({
   selector: 'app-main',
@@ -16,6 +18,7 @@ export class MainComponent implements OnInit {
   @ViewChild('side') side: MatSidenav;
 
   constructor(private router: Router,
+              private dataService: DataService,
               private cookieService: CookieService) {  }
   userName = this.cookieService.get('username');
 
@@ -30,6 +33,7 @@ export class MainComponent implements OnInit {
     this.userName = '';
     this.router.navigate(['login']);
   }
+
 
   close()  {
     this.side.close();

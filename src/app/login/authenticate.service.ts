@@ -19,8 +19,6 @@ const url_base = API_LOGIN;
 })
 export class AuthenticateService {
 
-
-
   constructor(private cookieService: CookieService,
               private  http: HttpClient) {
   }
@@ -31,24 +29,6 @@ export class AuthenticateService {
 
   isLoggedIn() {
       return this.cookieService.get('username').length !== 0;
-  }
-
-  logIn(username: string, password: string) {
-    this.getAll().subscribe(res => {
-      console.log(res)
-      this.users = res.map(item => {
-              return new User(
-                item.userName,
-                item.password
-              )})
-        for (let i = 0; i< this.users.length; i++) {
-          if (username === this.users[i].userName && btoa(password) === this.users[i].password) {
-            console.log('g');
-            return true;
-          }
-        }
-      return false;
-    });
   }
 
 }

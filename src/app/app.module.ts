@@ -16,7 +16,7 @@ import {
   MatListModule,
   MatMenuModule,
   MatStepperModule,
-  MatNativeDateModule, MatCardModule, MatDialogModule
+  MatNativeDateModule, MatCardModule, MatDialogModule, MatProgressSpinnerModule
 } from '@angular/material';
 import {DataService} from './main/data/data.service';
 import {CookieService} from "ngx-cookie-service";
@@ -80,6 +80,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     BrowserModule,
     LoginModule,
+    MatProgressSpinnerModule,
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
