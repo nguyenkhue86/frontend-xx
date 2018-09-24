@@ -1,7 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Data} from '../../../model/data.model';
 import {DataService} from '../data.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
 import {FormControl} from "@angular/forms";
 
 @Component({
@@ -37,7 +37,9 @@ export class ListComponent implements OnInit {
       width: '300px',
       data : item
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(data => {
+      let i = this.limg.findIndex(item => item.id === data.id);
+      this.limg.splice(i,1);
       console.log('The dialog was closed');
     });
   }
@@ -48,7 +50,9 @@ export class ListComponent implements OnInit {
       width: '400px',
       data: item
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(data => {
+      let i = this.limg.findIndex(item => item.id === data.id);
+      this.limg[i] = data;
     });
   }
 }
@@ -71,6 +75,7 @@ export class DialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: Data,
     public snackBar: MatSnackBar,
     private dataService: DataService) {
+
   }
 
   onNoClick(): void {
@@ -85,15 +90,14 @@ export class DialogComponent {
       } else {
           this.dataService.edit(this.data.id,this.data.url,this.nameCtrl.value == null ? this.data.name : this.nameCtrl.value,this.desCtrl.value == null ? this.data.description :this.desCtrl.value);
       }
-
       setTimeout(() =>{
         this.loading = false;
         this.openSnackBar('Successful');
-        this.dialogRef.close();
-        window.location.reload();
-      },this.flag === true ? 4000 : 500);
-
-
+        this.dataService.getById(this.data.id).subscribe(data => {
+          console.log(data);this.data = data;
+          this.dialogRef.close(this.data);
+        });
+      },this.flag === true ? 2000 : 500);
     } catch (e) {
       console.log(e);
       this.openSnackBar('Failed');
@@ -135,8 +139,11 @@ export class DeleteDialogComponent {
       console.log(this.data.id);
       this.dataService.delete(this.data.id);
       this.openSnackBar('Successful');
+      this.dataService.getById(this.data.id).subscribe(data => {
+        console.log(data);this.data = data;
+        this.dialogRef.close(this.data);
+      });
       this.dialogRef.close();
-      window.location.reload();
     } catch (e) {
       console.log(e);
       this.openSnackBar('Failed');

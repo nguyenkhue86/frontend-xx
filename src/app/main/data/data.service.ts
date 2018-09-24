@@ -27,6 +27,11 @@ export class DataService {
     return this.http.get<Data[]>(url_base);
   }
 
+  getById(id: any): Observable<Data> {
+    return this.http.get<Data>(url_base+"/"+id);
+  }
+
+
   getByName(name: string): Observable<Data[]>  {
     if (name !== '' && name.length !== 0) {
       let api = `${url_base}/search?name=${name}`;
