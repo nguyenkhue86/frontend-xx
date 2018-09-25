@@ -31,6 +31,15 @@
 
 }
 
+.sortName {
+  width: 15em;
+  display: flex;
+  flex-direction: row;
+}
+.sortName h4 {
+  margin-top: 1em;
+}
+
 .content {
   display: flex;
   padding: 1.5em;

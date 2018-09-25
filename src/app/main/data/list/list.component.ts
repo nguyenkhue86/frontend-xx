@@ -11,6 +11,8 @@ import {FormControl} from "@angular/forms";
 })
 export class ListComponent implements OnInit {
   public limg: Data[];
+  check: boolean = false;
+  sort: string = 'keyboard_arrow_up';
   constructor(private dataService: DataService, public dialog: MatDialog) {
     this.getData();
   }
@@ -22,15 +24,36 @@ export class ListComponent implements OnInit {
   Reset(e) {
     if (e.target.value === '') {
       this.getData();
+      this.check =false;
     } else {
-      this.doSearch(e.target.value);
+      this.doSearch(e.target.value,false);
     }
   }
 
 
-  doSearch(e) {
-    this.dataService.getByName(e).subscribe(data => this.limg = data);
+  doSearch(e,flag) {
+    this.dataService.getByName(e).subscribe(data => {
+      if (data.length === 0 && flag === true) {
+        console.log(data);
+        this.check = true;
+      }
+      else {
+        this.limg = data;
+      }
+    });
   }
+
+  sortName() {
+    if (this.sort === 'keyboard_arrow_up') {
+      this.sort = 'keyboard_arrow_down';
+      this.limg.sort((a, b) => b.name.localeCompare(a.name));
+    } else {
+      this.sort = 'keyboard_arrow_up';
+      this.limg.sort((a, b) => a.name.localeCompare(b.name));
+    }
+  }
+
+
 
   openDeleteDialog(item :Data): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
@@ -38,9 +61,11 @@ export class ListComponent implements OnInit {
       data : item
     });
     dialogRef.afterClosed().subscribe(data => {
-      let i = this.limg.findIndex(item => item.id === data.id);
-      this.limg.splice(i,1);
-      console.log('The dialog was closed');
+      if (data !== null) {
+        let i = this.limg.findIndex(item => item.id === data.id);
+        this.limg.splice(i,1);
+        console.log('The dialog was closed');
+      }
     });
   }
   ngOnInit() {
@@ -51,10 +76,12 @@ export class ListComponent implements OnInit {
       data: item
     });
     dialogRef.afterClosed().subscribe(data => {
-      let i = this.limg.findIndex(item => item.id === data.id);
-      this.limg[i] = data;
+      if (data !== null) {
+        this.getData();
+      }
     });
   }
+
 }
 
 @Component({
@@ -79,7 +106,7 @@ export class DialogComponent {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(null);
   }
 
   onSubmitClick(){
@@ -94,7 +121,7 @@ export class DialogComponent {
         this.loading = false;
         this.openSnackBar('Successful');
         this.dataService.getById(this.data.id).subscribe(data => {
-          console.log(data);this.data = data;
+          this.data = data;
           this.dialogRef.close(this.data);
         });
       },this.flag === true ? 2000 : 500);
@@ -132,22 +159,19 @@ export class DeleteDialogComponent {
               private dataService: DataService) {}
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(null);
   }
   onDeleteClick() {
     try {
-      console.log(this.data.id);
       this.dataService.delete(this.data.id);
       this.openSnackBar('Successful');
       this.dataService.getById(this.data.id).subscribe(data => {
-        console.log(data);this.data = data;
+        this.data = data;
         this.dialogRef.close(this.data);
       });
-      this.dialogRef.close();
     } catch (e) {
       console.log(e);
       this.openSnackBar('Failed');
-      this.dialogRef.close();
     }
   }
 

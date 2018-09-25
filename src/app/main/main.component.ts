@@ -2,7 +2,6 @@ import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {MatSidenav} from "@angular/material";
-import {ListComponent} from "./data/list/list.component";
 import {DataService} from "./data/data.service";
 
 @Component({

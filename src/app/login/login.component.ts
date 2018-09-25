@@ -56,7 +56,10 @@ export class LoginComponent implements OnInit {
           this.route.navigate(['/home']);
         }
       }
-      this.openSnackBar('Fail');
+      if (this.cookieService.get('username') == '') {
+        this.openSnackBar('Fail');
+      }
+
     });
 
   }

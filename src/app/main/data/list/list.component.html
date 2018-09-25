@@ -1,15 +1,23 @@
 
 <div class="container">
   <div class="title_box">
-    <h3 class="title">List Images</h3>
+    <h2 class="title">Heroes</h2>
+    <div class="sortName">
+      <h4>Sort By Name</h4>
+      <button  mat-icon-button (click)="sortName()">
+        <mat-icon>{{sort}}</mat-icon>
+      </button>
+
+    </div>
     <div class="search">
       <input class="searchTxt" (keyup)="Reset($event)" placeholder="Search name"  #search type="text">
-      <button matSuffix (click)="doSearch(search.value)" mat-icon-button color="primary"><mat-icon>search</mat-icon></button>
+      <button matSuffix (click)="doSearch(search.value,true)" mat-icon-button color="primary"><mat-icon>search</mat-icon></button>
     </div>
   </div>
 
-  <div class="content">
-    <div class="item" *ngFor="let item of limg">
+  <div class="content" >
+    <div *ngIf="check">Cant find the hero with this name</div>
+    <div class="item" *ngFor="let item of limg"  >
       <mat-card class="example-card">
         <button mat-icon-button class="btn-close" [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
