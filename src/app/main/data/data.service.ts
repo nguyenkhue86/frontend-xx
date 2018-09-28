@@ -27,6 +27,14 @@ export class DataService {
     return this.http.get<Data[]>(url_base);
   }
 
+  getByFavorite(): Observable<Data[]> {
+    return this.http.get<Data[]>(url_base+"/favorite");
+  }
+
+  update(item: Data) {
+    return this.http.put(url_base+"/"+item.id,{"id":item.id,"name":item.name,"url":item.url,"description":item.description,"favorite":item.favorite},httpOptions).subscribe(data => console.log(data));
+  }
+
   getById(id: any): Observable<Data> {
     return this.http.get<Data>(url_base+"/"+id);
   }
@@ -59,9 +67,9 @@ export class DataService {
 
    }
 
-   edit(id, file, name, desc) {
+   edit(id, file, name, desc,favo) {
      if (typeof file === "string" ) {
-       this.http.put(url_base+"/"+id,{"id":id,"name":name,"url":file,"description":desc},httpOptions).subscribe(data=>console.log(data));
+       this.http.put(url_base+"/"+id,{"id":id,"name":name,"url":file,"description":desc,"favorite":favo},httpOptions).subscribe(data=>console.log(data));
      } else {
        const idr = Math.random().toString(36).substring(2);
        this.ref = this.afStorage.ref(idr);
@@ -69,7 +77,7 @@ export class DataService {
        this.task.snapshotChanges().pipe(
          finalize(() => {
            this.ref.getDownloadURL().subscribe(url => {
-             this.http.put(url_base+"/"+id,{"id":id,"name":name,"url":url,"description":desc},httpOptions).subscribe(data=>console.log(data));
+             this.http.put(url_base+"/"+id,{"id":id,"name":name,"url":url,"description":desc,"favorite":favo},httpOptions).subscribe(data=>console.log(data));
            });
          })
        ).subscribe();

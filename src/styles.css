@@ -12,3 +12,10 @@
 .mat-raised-button.mat-accent {
   background: #a22932;
 }
+.mat-form-field-infix-search .mat-form-field-infix {
+  border-top: 1px solid transparent !important;
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+}

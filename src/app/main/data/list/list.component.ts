@@ -3,6 +3,7 @@ import {Data} from '../../../model/data.model';
 import {DataService} from '../data.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
 import {FormControl} from "@angular/forms";
+import {ClipboardService} from "ngx-clipboard";
 
 @Component({
   selector: 'app-list',
@@ -10,9 +11,9 @@ import {FormControl} from "@angular/forms";
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  public limg: Data[];
-  check: boolean = false;
+  public limg: Data[] =[];
   sort: string = 'keyboard_arrow_up';
+  toggle: boolean = false;
   constructor(private dataService: DataService, public dialog: MatDialog) {
     this.getData();
   }
@@ -21,27 +22,48 @@ export class ListComponent implements OnInit {
     this.dataService.getAll().subscribe(data => this.limg = data);
   }
 
-  Reset(e) {
-    if (e.target.value === '') {
-      this.getData();
-      this.check =false;
+  getFavorite() {
+    this.dataService.getByFavorite().subscribe(data => this.limg = data);
+  }
+
+
+
+  addFavorite(item: Data) {
+    if (item.favorite === true) {
+      item.favorite = false;
+      this.dataService.update(item);
+      setTimeout(() => {
+        if (this.toggle === true) {
+          this.getFavorite();
+        }
+      },10);
     } else {
-      this.doSearch(e.target.value,false);
+      item.favorite = true;
+      this.dataService.update(item);
     }
   }
 
-
-  doSearch(e,flag) {
-    this.dataService.getByName(e).subscribe(data => {
-      if (data.length === 0 && flag === true) {
-        console.log(data);
-        this.check = true;
-      }
-      else {
-        this.limg = data;
-      }
-    });
+  showFavorite(e) {
+    if (e.checked === true) {
+      this.getFavorite();
+      this.toggle = true;
+    } else {
+      this.getData();
+      this.toggle = false;
+    }
   }
+  doSearch(e) {
+    if (e.target.value === '') {
+      if (this.toggle === true) {
+        this.getFavorite();
+      } else {
+        this.getData();
+      }
+    } else {
+      this.dataService.getByName(e.target.value).subscribe(data => {this.limg = data;});
+    }
+  }
+
 
   sortName() {
     if (this.sort === 'keyboard_arrow_up') {
@@ -82,6 +104,15 @@ export class ListComponent implements OnInit {
     });
   }
 
+  openShareDialog(item: Data): void {
+    const dialogRef = this.dialog.open(ShareDialogComponent, {
+      width: '600px',
+      maxHeight: '100px',
+      data: item
+    });
+
+  }
+
 }
 
 @Component({
@@ -113,9 +144,9 @@ export class DialogComponent {
     this.loading = true;
     try {
       if (this.flag) {
-          this.dataService.edit(this.data.id,this.file,this.nameCtrl.value == null ? this.data.name : this.nameCtrl.value,this.desCtrl.value == null ? this.data.description :this.desCtrl.value);
+          this.dataService.edit(this.data.id,this.file,this.nameCtrl.value == null ? this.data.name : this.nameCtrl.value,this.desCtrl.value == null ? this.data.description :this.desCtrl.value,this.data.favorite);
       } else {
-          this.dataService.edit(this.data.id,this.data.url,this.nameCtrl.value == null ? this.data.name : this.nameCtrl.value,this.desCtrl.value == null ? this.data.description :this.desCtrl.value);
+          this.dataService.edit(this.data.id,this.data.url,this.nameCtrl.value == null ? this.data.name : this.nameCtrl.value,this.desCtrl.value == null ? this.data.description :this.desCtrl.value,this.data.favorite);
       }
       setTimeout(() =>{
         this.loading = false;
@@ -150,6 +181,7 @@ export class DialogComponent {
 @Component({
   selector: 'app-dialog',
   templateUrl: 'delete-dialog.html',
+
 })
 export class DeleteDialogComponent {
 
@@ -182,5 +214,49 @@ export class DeleteDialogComponent {
       horizontalPosition : 'right'
     });
   }
+
+}
+
+
+@Component({
+  selector: 'app-share-dialog',
+  templateUrl: 'share-dialog.html',
+  styleUrls: ['share-dialog.css']
+})
+export class ShareDialogComponent {
+
+  url: string = this.data.url;
+
+
+  constructor(public dialogRef: MatDialogRef<DeleteDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: Data,
+              public snackBar: MatSnackBar,
+              private _clipboardService: ClipboardService) {
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  copy() {
+    try {
+      this._clipboardService.copyFromContent(this.url);
+      this.openSnackBar('Copy to your clipboard. Share it by pasting your url');
+      this.dialogRef.close();
+    }catch (e) {
+      console.log(e);
+    }
+
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message,'', {
+      duration: 3000,
+      verticalPosition : 'bottom',
+      horizontalPosition : 'center'
+    });
+  }
+
+
 
 }

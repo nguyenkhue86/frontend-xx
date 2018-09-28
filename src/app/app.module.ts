@@ -6,7 +6,12 @@ import {LoginModule} from './login/login.module';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {MainComponent} from './main/main.component';
-import {DialogComponent, ListComponent, DeleteDialogComponent} from './main/data/list/list.component';
+import {
+  DialogComponent,
+  ListComponent,
+  DeleteDialogComponent,
+  ShareDialogComponent
+} from './main/data/list/list.component';
 import {CaptureComponent} from './main/data/capture/capture.component';
 import {
   MatButtonModule,
@@ -16,7 +21,7 @@ import {
   MatListModule,
   MatMenuModule,
   MatStepperModule,
-  MatNativeDateModule, MatCardModule, MatDialogModule, MatProgressSpinnerModule
+  MatNativeDateModule, MatCardModule, MatDialogModule, MatProgressSpinnerModule, MatSlideToggleModule
 } from '@angular/material';
 import {DataService} from './main/data/data.service';
 import {CookieService} from "ngx-cookie-service";
@@ -28,6 +33,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import {AuthenticateService} from "./login/authenticate.service";
 import {AuthenticateGuardService} from "./login/authenticate-guard.service";
+import {ClipboardModule} from "ngx-clipboard";
 
 
 const routes: Routes = [
@@ -65,7 +71,7 @@ const routes: Routes = [
   }
 ];
 @NgModule({
-  entryComponents:[ListComponent,DialogComponent,DeleteDialogComponent],
+  entryComponents:[ListComponent,DialogComponent,DeleteDialogComponent,ShareDialogComponent],
   declarations: [
     AppComponent,
     MainComponent,
@@ -73,6 +79,7 @@ const routes: Routes = [
     CaptureComponent,
     PageNotFoundComponent,
     DialogComponent,
+    ShareDialogComponent,
     DeleteDialogComponent
   ],
   imports: [
@@ -102,7 +109,9 @@ const routes: Routes = [
       storageBucket: "angular-demo-e31f5.appspot.com",
       messagingSenderId: "648437194464"
     }),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    MatSlideToggleModule,
+    ClipboardModule
   ],
   providers: [CookieService, DataService, AuthenticateService, AuthenticateGuardService],
   bootstrap: [

@@ -11,42 +11,39 @@
   border-bottom:1px #777777 solid ;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 .title_box .title{
    font-family: Tahoma, Arial, sans-serif;
    padding: 0 1em;
  }
-.search {
-  width: 100%;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 99;
-  text-align: right;
-  margin-right: 5em;
-
+.header-right {
+  display: flex;
+  flex-direction: row;
+  padding-right: 2em;
+}
+.header-right-item {
+  margin-right: 0.5em;
+}
+.mat-button {
+  height: 40px!important;
 }
 
-.searchTxt {
-  height: 30px;
+.search {
 
 }
 
 .sortName {
-  width: 15em;
   display: flex;
   flex-direction: row;
 }
-.sortName h4 {
-  margin-top: 1em;
-}
-
 .content {
   display: flex;
   padding: 1.5em;
+  padding-bottom: 5em;
   flex-wrap: wrap;
   overflow-y: scroll;
-  height:95%;
+  max-height:100%;
 }
 .content .item {
   background: aliceblue;
@@ -90,6 +87,8 @@
   padding-top: 1em;
 }
 
+
+
 @media screen and (max-width: 1280px) {
   .content .item {
     background: aliceblue;
@@ -105,32 +104,41 @@
     margin: 0 1em 1em 0;
     width: 46%;
   }
-  .search {
-    width: 100%;
-    right: 0;
-    position: relative;
-    top: 0;
-    z-index: 99;
-    text-align: right;
-    margin-right: 0;
 
+  .title_box{
+    display: flex;
+    flex-direction: column;
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 599px) {
   .content .item {
     background: aliceblue;
     padding: 0.3em;
     margin: 0 1em 1em 0;
     width: 100%;
   }
-  .search {
-    width: 100%;
-    position: relative;
-    right: 0;
-    top: 0;
-    z-index: 99;
-    text-align: right;
-    margin-right: 0;
 
+
+  .title_box{
+    margin-top: 2em;
+    border-bottom:1px #777777 solid ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .title_box .title{
+    font-family: Tahoma, Arial, sans-serif;
+    padding: 0 1em;
+  }
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    padding-right: 0;
+  }
+  .header-right-item {
+    text-align: center;
+    margin: 0 auto;
+    width: 60%;
+    border: 1px solid #fafafa !important;
   }
 }
