@@ -9,7 +9,6 @@ export class MovieModel {
   year_of_manufacture: number;
   duration: number;
   quality: string;
-  resolution: string;
   language: string;
   state: string;
   view: number;
@@ -29,7 +28,6 @@ export class MovieModel {
      this.year_of_manufacture = 0;
      this.duration = 0;
      this.quality = '';
-     this.resolution = '';
      this.language = '';
      this.state = '';
      this.view = 0;

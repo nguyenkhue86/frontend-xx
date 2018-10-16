@@ -69,14 +69,24 @@ export class DataService {
     return this.http.get<any>(url + id);
   }
 
-  getFilmByKindId(id: number) :Observable<any> {
+  getFilmByKindId(id: number): Observable<any> {
     const url = api + '/kind.php?kind=';
     return this.http.get<any>(url + id);
   }
 
-  getFilmByGenreId(id) :Observable<any> {
+  getFilmByGenreId(id): Observable<any> {
     const url = api + '/genre.php?'+id[0]+'=';
     return this.http.get<any>(url + id[1]);
+  }
+
+  getSeasonByFilmId(id): Observable<any> {
+    const url = api + '/season.php?movie_id=';
+    return this.http.get<any>(url + id);
+  }
+
+  getEpisodeBySeasonId(id): Observable<any> {
+    const url = api + '/episode.php?season_id=';
+    return this.http.get<any>(url + id);
   }
 
 }

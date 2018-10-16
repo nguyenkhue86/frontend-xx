@@ -153,6 +153,40 @@
   color: #dcf836;
 }
 
+/** season tab **/
+.season {
+  display: flex;
+  flex-direction: column;
+}
+
+ .season-box {
+  max-height: 300px;
+  display:flex;
+  margin: 2em 0 0 2em
+}
+
+ .season-detail {
+   margin-left: 1em;
+ }
+
+.season-detail h4:hover {
+  cursor: pointer;
+  color: #dcf836;
+}
+
+ .season-detail p {
+   margin-bottom: 5px;
+   font-size: 14px;
+   color: #abb7c4;
+ }
+
+
+ .season-box .season-left img {
+    max-height: 240px;
+   max-width: 150px;
+ }
+
+
 
 /** comment tab **/
 

@@ -13,6 +13,8 @@ import {starRatingArray} from '../models/starRatingArray';
 import * as BackgroundDataActions from '../ngrx/data.actions';
 import {Store} from '@ngrx/store';
 import {AppState} from '../ngrx/app.state';
+import {Season} from '../models/season.model';
+import {Episode} from '../models/episode.model';
 
 @Component({
   selector: 'app-film',
@@ -33,7 +35,6 @@ export class FilmComponent implements OnInit {
     year_of_manufacture: 0,
     duration: 0,
     quality: '',
-    resolution: '',
     language: '',
     state: '',
     view: 0,
@@ -48,6 +49,8 @@ export class FilmComponent implements OnInit {
   kinds: Kind[];
   @Input()
   comment: Comment[];
+  seasons: Season[];
+  episodes: Episode[];
   url ;
 
   starRatingList: starRatingArray = new starRatingArray();
@@ -57,7 +60,7 @@ export class FilmComponent implements OnInit {
   formComment = new FormControl();
   formName = new FormControl();
   formEmail = new FormControl();
-
+  movie_type: boolean = false;
   rateView = 0;
 
 
@@ -73,6 +76,15 @@ export class FilmComponent implements OnInit {
 
     this.dataService.getFilmById(this.id).subscribe(item => {
       this.film = item.data;
+      // @ts-ignore
+      if (this.film.movie_type == 'Movie') {
+        this.movie_type = false;
+      } else {
+        this.movie_type = true;
+        this.dataService.getSeasonByFilmId(this.film.id).subscribe(season => {
+          this.seasons = season.data;
+        });
+      }
       this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.film.trailer);
       this.ngRxStore(this.film.background);
     });
