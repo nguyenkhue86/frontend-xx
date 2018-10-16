@@ -12,8 +12,8 @@
             <li class="li home" (click)="goHome()" >HOME</li>
             <li class="li movies" [matMenuTriggerFor]="movies">MOVIES <mat-icon>keyboard_arrow_down</mat-icon>
               <mat-menu #movies="matMenu" [overlapTrigger]="false" >
-                <button mat-menu-item>Movies</button>
-                <button mat-menu-item>Series Movies</button>
+                <button (click)="getFilmByType('Movie')" mat-menu-item>Movies</button>
+                <button (click)="getFilmByType('Series-Movie')" mat-menu-item>Series Movies</button>
               </mat-menu>
             </li>
 

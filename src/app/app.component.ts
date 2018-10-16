@@ -93,5 +93,11 @@ export class AppComponent implements OnInit {
     this.route.navigate(['/']);
   }
 
+  getFilmByType(type) {
+    let name: string;
+    name = 'T_' + '\'' + type + '\'';
+    this.route.navigate(['/genre/'+name]);
+  }
+
 
 }
