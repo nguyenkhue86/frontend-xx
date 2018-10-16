@@ -1,0 +1,224 @@
+.movie-box {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  max-width: 1024px;
+  margin: 10% auto 0;
+}
+.movie-box .image-box  {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.movie-box .image-box .image{
+
+}
+.movie-box .image-box .image img{
+ border-radius: 5px;
+}
+.movie-box .image-box .watch-box {
+  text-align: center;
+  margin: 1em;
+}
+.movie-box .image-box .watch-box button {
+  background: #dd003f;
+  color: #fff;
+  font-weight: bold;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 1em;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  -moz-transition: -moz-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  width: 200px;
+}
+.movie-box .image-box .watch-box button mat-icon{
+  font-size: 1.4em;
+}
+.movie-box .image-box .watch-box:hover > button {
+  transform: rotateX(180deg);
+}
+.movie-box .image-box .watch-box:hover  .spanWatchNow {
+  display: none;
+}
+.movie-box .detail-box {
+  width: 70%;
+  padding: 2em 1em;
+  color: #fff;
+}
+.movie-box .detail-box .title {
+  font-size: 2em;
+  font-weight: bold;
+}
+.movie-box .detail-box .mat-icon-button {
+  border: 1px solid #fff;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.movie-box .detail-box .mat-icon-button:focus {
+  outline: none;
+}
+
+.movie-box .detail-box .rating {
+  margin-top: 1em;
+  cursor: default;
+}
+
+
+/*--------------.content-box------------*/
+.content-box .mat-tab-labels {
+  color: #fff !important;
+  font-weight: bold;
+}
+
+
+.overview-box {
+  display: flex;
+  justify-content: space-between;
+}
+.overview-box .overview-left {
+  width: 70%;
+}
+.content-box .overview-box, .content-box .comment-box {
+  padding: 2em;
+}
+.cast-box {
+  padding: 2em 0;
+}
+.cast-image {
+  width: 40px;
+}
+.cast {
+  margin: 1em 0;
+  display: flex;
+}
+.cast-name {
+  cursor: pointer;
+  height: 60px;
+  line-height: 60px;
+}
+.cast-image {
+  margin-right: 1em;
+}
+.cast-image img {
+  border-radius: 5px;
+  width: 40px;
+  height: 60px;
+}
+.cast-title {
+  font-size: 1em;
+  font-weight: bold;
+  padding: 1em 0 0.2em 0;
+  margin-bottom: 1em;
+}
+.cast-name {
+  color:#4280bf;
+  font-size: 0.9em;
+}
+.cast-name a:hover {
+  text-decoration: none;
+  color: #dcf836;
+}
+.trailer_label {
+  background: #dd003f;
+  color: white;
+  margin-bottom: 1em;
+  cursor: default;
+}
+
+/** overview right **/
+.overview-box .overview-right {
+  width: 30%;
+  padding-left: 3em;
+}
+.overview-box .overview-right p {
+
+}
+.overview-box .overview-right .titleP {
+  font-size: 1em;
+  font-weight: bold;
+  color: #abb7c4;
+  margin-bottom: 5px;
+}
+.overview-box .overview-right .contentP {
+  font-size: 0.9em;
+  padding-left:1em;
+  margin-bottom: 2em;
+}
+
+.overview-box .overview-right a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: #dcf836;
+}
+
+
+/** comment tab **/
+
+
+.lb-comment,.input {
+  display: inline-block;
+  width: 100%;
+}
+.comment-box {
+  padding: 0 2em;
+}
+.comment-box .mat-raised-button {
+  margin: 1em 1em 0 0;
+}
+.commented {
+  margin-top: 2em;
+  padding: 1.5em;
+  border: 1px solid #dcf836;
+  border-radius: 5px;
+}
+.comment-title {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #abb7c4;
+}
+.comment-title i {
+  font-size: 4em;
+  margin-right: 0.25em;
+}
+
+.comment-title div {
+
+}
+.comment-username {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-right: 1em;
+  margin-bottom: 5px;
+}
+
+.comment-date {
+  font-size: 0.9em;
+  color: #abb7c4;
+}
+
+.comment-content {
+  margin-top: 1em;
+}
+
+  /** rating **/
+.rating {
+  cursor: pointer;
+}
+
+.rating span {
+  color: #b5d4cc;
+  margin: 0 1px;
+  -webkit-transition: color 0.3s ease;
+  -moz-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+.rating .hover {
+  color: #016c50  !important;
+}
+
+.rating .active {
+  color: #dcf836;
+}

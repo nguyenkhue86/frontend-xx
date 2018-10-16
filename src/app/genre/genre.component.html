@@ -1,0 +1,28 @@
+<div class="home-box">
+  <div class="home-content-box">
+    <div class="film-list-box">
+      <div class="film-box">
+        <div class="film" *ngFor="let item of datal">
+          <div class="thumbnail">
+            <img *ngIf="item.avatar_movie_url!=''" src={{item.avatar_movie_url}} alt="firstMovies">
+            <button mat-raised-button class="readMore" (click)="watch(item)">
+              WATCH NOW<mat-icon>arrow_right</mat-icon>
+            </button>
+            <div class="title">
+              <p>{{item.movie_name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pagination-box" *ngIf="paging.movies_total.length > paging.itemPerPage">
+        <ul class="ul">
+          <li class="li" *ngIf="paging.page!= 0" (click)="setPage(0)" ><i class="fas fa-angle-double-left"></i></li>
+          <li class="li" *ngIf="paging.page!= 0" (click)="setPage(paging.page > 0 ? paging.page - 1 : 0)" ><i class="fas fa-angle-left"></i></li>
+          <li class="li" >{{ paging.page + 1}}</li>
+          <li class="li" *ngIf="paging.page!= pages-1" (click)="setPage(paging.page < pages-1 ? paging.page + 1 : pages-1)" ><i class="fas fa-angle-right"></i></li>
+          <li class="li" *ngIf="paging.page!= pages-1" (click)="setPage(pages-1)" ><i class="fas fa-angle-double-right"></i></li>
+        </ul>
+      </div>
+    </div>
+  </div><!---end .home-content-box-->
+</div><!--end .container-->

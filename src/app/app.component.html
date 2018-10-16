@@ -1,0 +1,126 @@
+<div id="container" >
+  <img src="{{url}}" class="background">
+
+  <div class="header" >
+    <div class="container">
+      <div class="header-menu">
+        <div class="logo" >
+          <img (click)="goHome()" src="http://haintheme.com/demo/wp/buster/wp-content/themes/blockter/images/lg.png">
+        </div>
+        <div class="menu">
+          <ul class="ul-menu">
+            <li class="li home" (click)="goHome()" >HOME</li>
+            <li class="li movies" [matMenuTriggerFor]="movies">MOVIES <mat-icon>keyboard_arrow_down</mat-icon>
+              <mat-menu #movies="matMenu" [overlapTrigger]="false" >
+                <button mat-menu-item>Movies</button>
+                <button mat-menu-item>Series Movies</button>
+              </mat-menu>
+            </li>
+
+            <li class="li tvshows" [matMenuTriggerFor]="tvshows">GENRES<mat-icon>keyboard_arrow_down</mat-icon></li>
+            <mat-menu #tvshows="matMenu" [overlapTrigger]="false" >
+              <button (click)="selectGenre(item)" mat-menu-item *ngFor="let item of kinds">{{item.kind_name}}</button>
+            </mat-menu>
+            <li class="li news" [matMenuTriggerFor]="news">COUNTRIES <mat-icon>keyboard_arrow_down</mat-icon></li>
+            <mat-menu #news="matMenu" [overlapTrigger]="false" >
+              <button (click)="selectCountry(item)" mat-menu-item *ngFor="let item of countries">{{item.country_name}}</button>
+            </mat-menu>
+            <li class="li aboutus" (click)="aboutUs()" >ABOUT US</li>
+          </ul>
+          <div class="login">
+            <h4 id="hello">Hello guest</h4>
+            <button class="btnLogin" mat-raised-button color="warn">Login</button>
+          </div>
+        </div>
+      </div><!--end .header-menu-->
+      <div class="search">
+        <mat-form-field class="dropdownBox">
+          <mat-select class="mat-select" [(value)]="selected" >
+            <mat-option value="movies">Movies</mat-option>
+            <mat-option value="directors">Directors</mat-option>
+            <mat-option value="casts">Casts</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="input">
+          <input class="txtSearch" placeholder="Search for Movies,Directors or Casts">
+          <button class="btnSearch" mat-icon-button><mat-icon>search</mat-icon></button>
+        </div>
+      </div>
+    </div>
+  </div><!--end .header-->
+  <router-outlet ></router-outlet>
+
+  <div class="back-top" *ngIf="checkScroll">
+    <a (click)="scrollToTop()" ><i class="fas fa-arrow-circle-up"></i></a>
+  </div>
+
+  <!-- .footer -->
+  <footer class="footer">
+      <div class="footer-container">
+          <div class="footer-item">
+            <div class="item">
+              <img src="http://haintheme.com/demo/wp/buster/wp-content/uploads/2018/02/logo.png" alt="footer-logo"><br>
+              <div class="item-about">
+                <p>5th Avenue st, manhattan</p>
+                <p>New York, NY 10001</p>
+                <p>Call us: <a href="#">(+03) 113</a></p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="footer-item"><h4 class="footer-item-title">Resources</h4>
+            <div class="item">
+              <ul class="menu">
+                <li  class="menu-item "><a href="#">About Us</a></li>
+                <li  class="menu-item "><a href="#">Contact Us</a></li>
+                <li  class="menu-item "><a href="#">Forums</a></li>
+                <li  class="menu-item "><a href="#">Blog</a></li>
+                <li  class="menu-item "><a href="#">Help Center</a></li>
+            </ul>
+            </div>
+          </div>
+        
+          <div class="footer-item"><h4 class="footer-item-title">Legal</h4>
+            <div class="item">
+              <ul  class="menu">
+                <li  class="menu-item"><a href="#">Terms of Use</a></li>
+                <li  class="menu-item"><a href="#">Privacy Policy</a></li>
+                <li  class="menu-item"><a href="#">Security</a></li>
+             </ul>
+            </div>
+          </div>
+        
+          <div class="footer-item"><h4 class="footer-item-title">Account</h4>
+            <div class="item">
+              <ul class="menu">
+                <li class="menu-item "><a href="#">My Account</a></li>
+                <li class="menu-item "><a href="#">Watchlist</a></li>
+                <li class="menu-item "><a href="#">Collections</a></li>
+                <li class="menu-item "><a href="#">User Guide</a></li>
+               </ul>
+            </div>
+          </div>
+        
+          <div class="footer-item">
+            <h4 class="footer-item-title">Newsletter</h4>
+            <div class="item">
+              <p>Subscribe to our newsletter system now to get latest news from us</p>
+              <form action="#" method="post">
+                <label for="mce-EMAIL">
+                  <input type="email" placeholder="Enter your email" name="EMAIL" id="mce-EMAIL" required>
+                </label>
+                <button mat-raised-button color="accent" >Subscribe now</button>
+              </form>
+            </div>
+          </div>
+        
+      </div><!--end .footer-container-->
+    <div >
+      <div >
+        <span>© 2018 Steam. All Rights Reserved. Designed by Steam.</span>
+      </div>
+    </div>
+  </footer>
+  <!--end .footer -->
+
+</div>

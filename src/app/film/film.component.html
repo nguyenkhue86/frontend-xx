@@ -1,0 +1,120 @@
+<div class="movie-box">
+  <div class="image-box">
+    <div class="image"><img src={{film.avatar_movie_url}} alt="" class="img-full-width"></div>
+    <div class="watch-box">
+      <button mat-raised-button > <mat-icon>arrow_right</mat-icon> <span class="spanWatchNow">{{watch_now}}</span> </button>
+    </div>
+  </div>
+  <div class="detail-box">
+    <div class="title-box">
+      <div class="title">
+        <p class="movie-title">{{film.movie_name}}</p>
+      </div>
+      <div class="share">
+        <button mat-icon-button > <mat-icon>share</mat-icon></button>
+        <button mat-icon-button > <mat-icon>favorite</mat-icon></button>
+      </div>
+      <div class="rating">
+        <span class="fa fa-star  {{item.active?'active':''}}"  *ngFor="let item of starList.starRatingList"> </span> <span matBadge={{rateView}} matBadgeColor="accent" matBadgeSize="medium" matBadgeOverlap="false"></span>
+      </div>
+    </div>
+    <div class="content-box">
+      <mat-tab-group>
+        <mat-tab label="OVERVIEW">
+          <div class="overview-box">
+            <div class="overview-left">
+              <div class="description-box">
+                <p class="description">
+                  {{film.movie_content}}
+                </p>
+              </div>
+              <div class="trailer-box">
+                <button mat-raised-button class="trailer_label" >Watch Trailer</button>
+                  <iframe width="400" height="350"  [src]='url' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen ></iframe>
+                <!--<iframe width="560" height="315" src={{film.trailer}} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+              </div>
+              <div class="cast-box">
+                <div class="cast-title">Cast</div>
+                <hr style="background: white; opacity: 0.5;max-width: 300px">
+                <div class="cast" *ngFor="let cast of actors">
+                  <div class="cast-image">
+                    <img src={{cast.avatar_url}} alt="Actor Avatar">
+                  </div>
+                  <div class="cast-name"><a (click)="getFilmByActor(cast)">{{cast.actor_name}}</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="overview-right">
+              <p class="titleP">Directors :</p>
+              <p class="contentP"><a (click)="getFilmByDirector(dir)" *ngFor="let dir of directors">{{dir.director_name}} <br> </a></p>
+              <p class="titleP">State :</p>
+              <p class="contentP">{{film.state}}</p>
+              <p class="titleP">Release Date :</p>
+              <p class="contentP">{{film.date_of_manufacture}}</p>
+              <p class="titleP">Duration :</p>
+              <p class="contentP">{{film.duration}} minutes</p>
+              <p class="titleP">Country :</p>
+              <p class="contentP"><a (click)="getFilmByCountry(film.country_id,film.country_name)" >{{film.country_name}}</a></p>
+              <p class="titleP">Company :</p>
+              <p class="contentP"><a  >{{film.company_name}}</a></p>
+              <p class="titleP">Language :</p>
+              <p class="contentP">{{film.language}}</p>
+              <p class="titleP">Genres :</p>
+              <p class="contentP"> <a (click)="getFilmByGenre(kind)" *ngFor="let kind of kinds">{{kind.kind_name}} <br> </a></p>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="COMMENT">
+          <div class="comment-box">
+            <div class="commented" *ngFor="let item of comment">
+              <div class="comment-title">
+                <i class="fas fa-user-ninja"></i>
+                <div>
+                  <p class="comment-username">{{item.email}}</p>
+                  <p class="comment-date">{{item.comment_date}}</p>
+                </div>
+              </div>
+              <div class="comment-content">
+                <p>
+                  {{item.comment}}
+                </p>
+              </div>
+            </div>
+
+
+          </div>
+          <div id="respond" class="comment-box">
+            <h3 id="reply-title" class="comment-reply-title">Leave a Review
+            </h3>
+            <form class="comment-form" >
+              <p class="comment-notes">
+                <span id="email-notes">Your email address will not be published.</span>Required fields are marked<span class="required">*</span>
+              </p>
+              <label class="lb-comment">Review</label>
+              <textarea id="comment" [formControl]="formComment" rows="4" name="comment" placeholder="" class="input" aria-required="true"></textarea>
+              <p class="comment-form-author">
+                <label class="lb-comment" for="author">Name<span class="required"> *</span></label>
+                <input id="author" name="author" [formControl]="formName" type="text" class="input" value="" size="30" maxlength="245" required="required"></p>
+              <p class="comment-form-email">
+                <label class="lb-comment" for="email">Email <span class="required"> *</span></label>
+                <input id="email" name="email" type="email" [formControl]="formEmail" class="input" value="" size="30" maxlength="100" aria-describedby="email-notes" required="required">
+              </p>
+            <!--Rating-->
+            <div class="wrap-rating in-post">
+              <span class="rating-title">Rating<sup>*</sup></span>
+              <div class="rating">
+                <span class="fa fa-star {{item.hover?'hover':''}} {{item.active?'active':''}}" (mouseover)="starRatingList.mouseOverStar(item.id)" (click)="starRatingList.mouseActiveStar(item.id)" (mouseleave)="starRatingList.mouseLeaveStar()" *ngFor="let item of starRatingList.starRatingList"></span>
+              </div>
+            </div>
+            <!--/Rating-->
+            <div class="btn-submit">
+              <button (click)="send()" type="submit" mat-raised-button color="primary">Send</button>
+              <button  mat-raised-button color="warn" (click)="reset()">Reset</button>
+            </div>
+            </form>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

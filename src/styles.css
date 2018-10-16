@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none !important;
+}
+img {
+  max-width: 100%;
+}
+.mat-menu-panel {
+  border-radius: 0 !important;
+}
+.mat-menu-panel .mat-menu-content{
+  border-radius: 0 !important;
+  padding: 1em !important;
+  border-top: 3px solid #dcf836 !important;
+
+}
+.mat-menu-panel .mat-menu-content .mat-menu-item{
+  font-family: "Dosis", Helvetica, Arial, sans-serif !important;
+  font-weight: bold !important;
+  font-size: 1em !important;
+  cursor: pointer !important;
+}
+.dropdownBox .mat-select-value {
+  color: white;
+  padding: 0 1em;
+}
+.dropdownBox .mat-form-field-infix {
+  padding: 0 !important;
+}
+
+.dropdownBox .mat-form-field-underline {
+  display: none !important;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  max-width: 50px !important;
+}
+.mat-tab-label-content {
+  color: #fff !important;
+  font-weight: bold;
+}
+.mat-tab-label-active {
+  border-bottom: 2px solid #dcf836;
+}
+
+
+.mat-menu-panel {
+  position: fixed;
+}

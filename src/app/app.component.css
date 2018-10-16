@@ -1,0 +1,190 @@
+#container {
+  min-height: 100vh;
+  background-repeat: no-repeat !important;
+  background: #020d18;
+
+}
+
+#container .background {
+  opacity: 0.5;
+  width: 100%;
+  display: block;
+  max-height: 789px;
+  position: absolute;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 1em;
+}
+.header {
+  position: relative;
+  max-height: 100%;
+  background: none;
+  z-index: 10;
+}
+
+.header-menu {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+}
+.logo {
+  padding: 1em;
+}
+.logo img{
+  height: 68px;
+  min-width: 130px;
+  cursor: pointer;
+}
+.menu {
+  width: 100%;
+  height: 100px;
+  padding: 1.9em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.menu .ul-menu .li {
+  font-family: "Dosis", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  list-style:none;
+  color: aliceblue;
+  cursor: pointer;
+}
+.ul-menu{
+  display: flex;
+  flex-direction: row;
+  height: 68px;
+  padding: 0.9em;
+}
+.menu .ul-menu .li{
+  padding: 0 1em;
+}
+
+.menu .ul-menu .li:hover,.menu .ul-menu .li:visited{
+  color: #dcf836;
+}
+.menu .ul-menu .li .mat-icon{
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.menu .ul-menu .home {
+  color: #dcf836;
+}
+
+.login {
+  display: flex;
+  right: 10vh;
+}
+
+#hello {
+  color:#fff;
+  font-size: 1em;
+  padding: 0.7em;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  max-height: 50px;
+  border: 3px solid #020d18;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.dropdownBox {
+  background: #233a50;
+  max-height: 44px;
+  max-width: 150px;
+  border-right: 1px solid  #020d18;
+
+}
+
+.dropdownBox .mat-select-value {
+  color: white !important;
+}
+
+.input {
+  max-width: 450px;
+  display: flex;
+  max-height: 100%;
+  background: #233a50;
+}
+
+.input .txtSearch {
+  width: 400px;
+  max-width: 400px  ;
+  background: #233a50;
+  border: none;
+  color: white;
+  padding: 0 1em;
+}
+.input .btnSearch {
+  max-width: 44px;
+  max-height: 44px;
+  width: 44px;
+  height: 44px  ;
+  color: white;
+}
+
+
+
+/** footer **/
+#header {
+  transition:  11s ease;
+}
+
+.back-top a{
+  font-size: 3em;
+  color: #dcf836;
+  position: fixed;
+  right: 2%;
+  bottom: 5%;
+  cursor: pointer;
+}
+
+.footer {
+  max-height: 240px;
+  background-image: url("http://haintheme.com/demo/wp/buster/wp-content/uploads/2017/10/footer-bg.jpg");
+  color: #ffffff;
+  padding: 0 5em;
+}
+.footer .footer-container {
+  margin: 5em auto 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer .footer-container .footer-item {
+  width: 20%;
+  padding: 2em 0;
+}
+.footer .footer-container .footer-item ul{
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.footer .footer-container .footer-item a {
+  color: white;
+}
+.footer .footer-container .footer-item a:hover {
+  text-decoration: none;
+  color: #dcf836;
+}
+.item-about p{
+  margin: 0;
+}

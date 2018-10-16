@@ -1,0 +1,75 @@
+<div class="home-box">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="item-box">
+          <div class="item" *ngFor="let item of data">
+            <div class="thumbnail">
+              <img *ngIf="item.avatar_movie_url!=''" src={{item.avatar_movie_url}} alt="firstMovies">
+              <button mat-raised-button class="readMore" (click)="watch(item)">
+                WATCH NOW<mat-icon>arrow_right</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="item-box">
+        <div class="item" *ngFor="let item of data2">
+          <div class="thumbnail">
+            <img src={{item.avatar_movie_url}} alt="firstMovies">
+            <button mat-raised-button class="readMore" (click)="watch(item)">
+              WATCH NOW<mat-icon>arrow_right</mat-icon>
+            </button>
+          </div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <div class="home-content-box">
+    <p class="title">Genres</p>
+    <div class="genres-list">
+      <a class="btn-genres "  [ngClass]="{'active-category': categoryIndex === 0}" (click)="getAllFilm()" ># All</a>
+      <a class="btn-genres"  [ngClass]="{'active-category': categoryIndex === kind.id}"  (click)="getFilmByGenresId(kind.id)" *ngFor="let kind of genres"># {{ kind.kind_name}}</a>
+    </div><!---end .genres-list-->
+    <div class="film-list-box">
+      <div class="film-box">
+        <div class="film" *ngFor="let item of datal">
+          <div class="thumbnail">
+            <img *ngIf="item.avatar_movie_url!=''" src={{item.avatar_movie_url}} alt="firstMovies">
+            <button mat-raised-button class="readMore" (click)="watch(item)">
+              WATCH NOW<mat-icon>arrow_right</mat-icon>
+            </button>
+            <div class="title">
+              <p>{{item.movie_name}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="no-film" *ngIf="paging.movies_total.length == 0">No Film</div>
+      </div>
+      <div class="pagination-box" *ngIf="paging.movies_total.length > paging.itemPerPage">
+        <ul class="ul">
+          <li class="li" *ngIf="paging.page!= 0" (click)="setPage(0)" ><i class="fas fa-angle-double-left"></i></li>
+          <li class="li" *ngIf="paging.page!= 0" (click)="setPage(paging.page > 0 ? paging.page - 1 : 0)" ><i class="fas fa-angle-left"></i></li>
+          <li class="li" >{{ paging.page + 1}}</li>
+          <li class="li" *ngIf="paging.page!= pages-1" (click)="setPage(paging.page < pages-1 ? paging.page + 1 : pages-1)" ><i class="fas fa-angle-right"></i></li>
+          <li class="li" *ngIf="paging.page!= pages-1" (click)="setPage(pages-1)" ><i class="fas fa-angle-double-right"></i></li>
+        </ul>
+      </div>
+    </div>
+  </div><!---end .home-content-box-->
+</div><!--end .container-->

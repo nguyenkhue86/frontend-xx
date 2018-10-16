@@ -1,0 +1,139 @@
+.home-box {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+.carousel {
+  max-height: 420px;
+}
+
+.carousel-item {
+  max-height: 420px;
+
+}
+
+.item-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.item {
+
+}
+
+.thumbnail {
+  max-width: 300px;
+  max-height: 420px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+/*.thumbnail img {*/
+  /*position: relative;*/
+  /*display: block;*/
+  /*left: 0;*/
+  /*top: 0;*/
+/*}*/
+.thumbnail:hover .readMore {
+  display: block;
+}
+.readMore {
+  display: none;
+  position: absolute;
+  color: #fff;
+  height: 30px;
+  line-height: 30px;
+  bottom:50%;
+  left: 30%;
+  background: #dd003f;
+  border-radius: 30px;
+  cursor: pointer;
+  padding: 0 0.4em;
+}
+
+.btnRead {
+
+}
+
+/*-----------------------------------------Home-content-box-----------------*/
+.home-content-box {
+  width: 100%;
+  padding: 1em;
+  color: #fff;
+  margin-top: 15em;
+}
+.home-content-box .title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #fff;
+}
+
+.film-box {
+  display: flex;
+  min-height: 400px;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+.film-box .film {
+  width: 23%;
+  margin: 0.5em;
+}
+.genres-list {
+  display: flex;
+}
+.genres-list .btn-genres {
+  display: inline-block;
+  padding: 1em;
+  font-weight: bolder;
+  font-family: Dosis, Helvetica, Arial, sans-serif !important;
+  cursor: pointer;
+}
+.genres-list .btn-genres .active {
+  color: #dcf836;
+}
+.genres-list .btn-genres:hover {
+  color: #dcf836;
+}
+.active-category {
+  color: #dcf836 !important;
+}
+.home-content-box .film {
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+}
+
+.home-content-box .thumbnail .title {
+  margin-top: 0.5em;
+  padding-left: 0.3em;
+  text-align: left;
+  font-size: 1em;
+  font-weight: bold;
+  text-shadow: 0 0 10px #dcf836;
+}
+.home-content-box .thumbnail img {
+  box-shadow: 0 0 2px 2px #dcf836;
+  max-height: 407px;
+}
+
+.pagination-box {}
+.pagination-box .ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 2em;
+}
+.pagination-box .ul .li {
+  display: inline-block;
+  cursor: pointer;
+  margin: 0 0.2em;
+  padding: 0.4em;
+  font-weight: bold;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+.pagination-box .ul .li:hover {
+  color: #dcf836;
+  border: 1px solid #dcf836;
+}
