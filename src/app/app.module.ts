@@ -15,11 +15,13 @@ import {DataService} from './data.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { GenreComponent } from './genre/genre.component';
+import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
   { path: '', component : HomeComponent },
   { path: 'genre/:id', component: GenreComponent},
+  { path: 'search/:name', component: SearchComponent},
   { path: 'film/:id', component: FilmComponent},
   { path: '**', component: PageNotFoundComponent}
 ];
@@ -29,7 +31,8 @@ const routes: Routes = [
     HomeComponent,
     FilmComponent,
     PageNotFoundComponent,
-    GenreComponent
+    GenreComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

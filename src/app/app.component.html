@@ -42,8 +42,8 @@
           </mat-select>
         </mat-form-field>
         <div class="input">
-          <input class="txtSearch" placeholder="Search for Movies,Directors or Casts">
-          <button class="btnSearch" mat-icon-button><mat-icon>search</mat-icon></button>
+          <input class="txtSearch" [formControl]="formSearch"  #txtSearch (keyup.enter)="searchFilm(txtSearch.value)" placeholder="Search for Movies,Directors or Casts">
+          <button class="btnSearch" (click)="searchFilm(txtSearch.value)" mat-icon-button><mat-icon>search</mat-icon></button>
         </div>
       </div>
     </div>

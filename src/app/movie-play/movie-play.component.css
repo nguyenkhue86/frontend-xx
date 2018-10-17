@@ -1,0 +1,12 @@
+.movie-play-container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+.movie-box {
+  height: 50%;
+  width: 50%;
+
+  background: #4280bf;
+}

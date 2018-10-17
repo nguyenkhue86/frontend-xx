@@ -8,6 +8,7 @@ import {DataService} from './data.service';
 import {Country} from './models/country.model';
 import {MovieModel} from './models/movie.model';
 import {PlatformLocation} from '../../node_modules/@angular/common';
+import {FormControl} from '@angular/forms';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
   kinds: Kind[];
   countries: Country[];
   checkScroll: boolean = true;
+  formSearch = new FormControl();
 
 
   constructor(private store: Store<AppState>,
@@ -39,6 +41,8 @@ export class AppComponent implements OnInit {
     this.location.onPopState(() => {
       this.store.dispatch(new BackgroundDataActions.RemoveBackgroundData());
       this.store.dispatch(new BackgroundDataActions.AddBackgroundData({url: this.initialUrl}));
+      this.formSearch.setValue('');
+
     });
   }
   ngOnInit() {
@@ -88,6 +92,7 @@ export class AppComponent implements OnInit {
 
 
   goHome() {
+    this.formSearch.setValue('');
     this.store.dispatch(new BackgroundDataActions.RemoveBackgroundData());
     this.store.dispatch(new BackgroundDataActions.AddBackgroundData({url: this.initialUrl}));
     this.route.navigate(['/']);
@@ -97,6 +102,29 @@ export class AppComponent implements OnInit {
     let name: string;
     name = 'T_' + '\'' + type + '\'';
     this.route.navigate(['/genre/'+name]);
+  }
+
+  searchFilm(name: string) {
+    let search: string;
+    switch (this.selected) {
+      case 'movies' : {
+        search = 'M=\'' + name + '\'';
+        break;
+      }
+      case 'casts'  : {
+        search = 'A=\'' + name + '\'';
+        break;
+      }
+      case 'directors'  :{
+        search = 'D=\'' + name + '\'';
+        break;
+      }
+      default : {
+        return;
+      }
+    }
+    this.route.navigate(['/search/' + search]);
+
   }
 
 
