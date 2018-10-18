@@ -24,26 +24,7 @@ import {Episode} from '../models/episode.model';
 export class FilmComponent implements OnInit {
   watch_now = 'WATCH NOW';
   id;
-  @Input() film: MovieModel = {
-    id: 0,
-    movie_name: '',
-    trailer: '',
-    movie_content: '',
-    avatar_movie_url: '',
-    background: '',
-    date_of_manufacture: '',
-    year_of_manufacture: 0,
-    duration: 0,
-    quality: '',
-    language: '',
-    state: '',
-    view: 0,
-    country_id: 1,
-    company_id: 1,
-    movie_type: 0,
-    country_name: '',
-    company_name: ''
-  };
+  film: MovieModel = new MovieModel();
   actors: Actor[];
   directors: Director[];
   kinds: Kind[];
@@ -57,11 +38,9 @@ export class FilmComponent implements OnInit {
   starList: starRatingArray = new starRatingArray();
   starNumber:number = 1;
 
-  formComment = new FormControl();
-  formName = new FormControl();
-  formEmail = new FormControl();
-  movie_type: boolean = false;
+
   rateView = 0;
+  movie_type: boolean = false;
 
 
   constructor(private router: ActivatedRoute,
@@ -71,7 +50,6 @@ export class FilmComponent implements OnInit {
               private store: Store<AppState>
   ) {
 
-    this.starRatingList.mouseActiveStar(1);
     this.id = +this.router.snapshot.paramMap.get('id').split('_', 1);
 
     this.dataService.getFilmById(this.id).subscribe(item => {
@@ -123,27 +101,6 @@ export class FilmComponent implements OnInit {
   }
 
 
-  send() {
-    if (this.formName.valid && this.formEmail.valid && this.formComment.valid) {
-      let data = new Comment(1, this.film.id, this.starRatingList.rate, this.formComment.value, this.formEmail.value, '');
-        try {
-          this.dataService.postComment(data);
-          this.reset();
-          setTimeout(() => {
-            this.getComment();
-          }, 200);
-        } catch (e) {
-          console.log(e);
-        }
-    }
-  }
-
-  reset() {
-    this.formName.setValue(null);
-    this.formComment.setValue(null);
-    this.formEmail.setValue(null);
-    this.starRatingList.mouseActiveStar(1);
-  }
 
   getFilmByActor(cast: Actor) {
     let name: string;

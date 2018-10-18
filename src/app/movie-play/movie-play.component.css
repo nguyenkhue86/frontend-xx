@@ -88,3 +88,8 @@
   color: #abb7c4;
   margin: 0;
 }
+
+app-comment {
+  position: relative;
+  z-index: 12;
+}
