@@ -25,6 +25,7 @@ export class MoviePlayComponent implements OnInit {
   episodes: Episode[] = [];
   season: Season = new Season();
   check: boolean = false;
+  epIndex: number;
   constructor(private route: Router,
               private dataService: DataService,
               private store: Store<AppState>,
@@ -56,10 +57,10 @@ export class MoviePlayComponent implements OnInit {
 
             this.episodes = data.data;
             this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.episodes[0].url);
+            this.epIndex = this.episodes[0].id;
 
             this.dataService.getRelateSeason(this.season).subscribe(data => {
               this.relatedMovie = data.data;
-              console.log(this.relatedMovie);
             });
           });
         });
@@ -69,6 +70,10 @@ export class MoviePlayComponent implements OnInit {
 
     });
 
+  }
+  watchEp(ep: Episode) {
+    this.epIndex = ep.id;
+    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(ep.url);
   }
 
   goToDetail(data: any) {
@@ -80,7 +85,6 @@ export class MoviePlayComponent implements OnInit {
       name = data.id + '_' + name.split(' ').join('_');
       this.route.navigate(['film/' + name]);
     } else {
-      console.log('/film/' + data.id +'_S/play');
       this.route.navigate(['/film/' + data.id +'_S/play']);
     }
   }

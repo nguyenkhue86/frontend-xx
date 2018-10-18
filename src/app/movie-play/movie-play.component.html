@@ -7,6 +7,13 @@
         <h3 *ngIf="check">{{film.movie_name}}</h3>
         <!-- case 2: -->
         <h3 *ngIf="!check">SEASON {{season.season}}</h3>
+        <div class="episode-box">
+          <p>Episode :</p>
+          <ul class="ul-episode">
+            <li *ngIf="check" class="li-episode">Full</li>
+            <li  *ngFor="let ep of episodes" [ngClass]="{'active-ep': epIndex === ep.id}" (click)="watchEp(ep)" class="li-episode">{{ep.episode}}</li>
+          </ul>
+        </div>
         <app-comment></app-comment>
       </div> <!--end .movie-title -->
       <div class="comment-box"></div>

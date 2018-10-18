@@ -89,7 +89,29 @@
   margin: 0;
 }
 
-app-comment {
-  position: relative;
-  z-index: 12;
+/** episode **/
+.episode-box {
+  margin-top: 2em;
+}
+.ul-episode {
+  display: flex;
+}
+
+.li-episode {
+  padding: 0 0.4em;
+  list-style-type: none;
+  border: 1px solid #abb7c4;
+  margin-right: 0.5em;
+  background: #dd003f;
+  color: white;
+  cursor: pointer;
+}
+.li-episode:hover {
+  background: #dcf836;
+  color: #020d18;
+}
+
+.active-ep {
+  background: #dcf836;
+  color: #020d18;
 }
