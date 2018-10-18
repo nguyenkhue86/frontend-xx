@@ -2,7 +2,7 @@
   <div class="image-box">
     <div class="image"><img src={{film.avatar_movie_url}} alt="" class="img-full-width"></div>
     <div class="watch-box">
-      <button mat-raised-button (click)="playMovie()" > <mat-icon>arrow_right</mat-icon> <span class="spanWatchNow">{{watch_now}}</span> </button>
+      <button *ngIf="!movie_type" mat-raised-button (click)="playMovie(null)" > <mat-icon>arrow_right</mat-icon> <span class="spanWatchNow">{{watch_now}}</span> </button>
     </div>
   </div>
   <div class="detail-box">
@@ -29,9 +29,8 @@
                 </p>
               </div>
               <div class="trailer-box">
-                <button mat-raised-button class="trailer_label" >Watch Trailer</button>
+                <button  mat-raised-button class="trailer_label" >Watch Trailer</button>
                   <iframe width="400" height="350"  [src]='url' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen ></iframe>
-                <!--<iframe width="560" height="315" src={{film.trailer}} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
               </div>
               <div class="cast-box">
                 <div class="cast-title">Cast</div>
@@ -70,10 +69,10 @@
           <div class="season">
             <div class="season-box" *ngFor="let season of seasons">
              <div class="season-left">
-               <img src={{season.image}}>
+               <img src={{season.avatar_movie_url}}>
              </div>
               <div class="season-detail">
-                <h4>SEASON {{season.season}}</h4>
+                <h4 (click)="playMovie(season)">SEASON {{season.season}}</h4>
                 <p>{{season.episodes}} Episodes</p>
                 <p>Date : {{season.date}}</p>
                 <p>{{season.season_content}}</p>

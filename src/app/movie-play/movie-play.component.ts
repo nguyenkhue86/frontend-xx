@@ -9,6 +9,8 @@ import {DomSanitizer} from '@angular/platform-browser';
 import * as BackgroundDataActions from '../ngrx/data.actions';
 import {Store} from '@ngrx/store';
 import {AppState} from '../ngrx/app.state';
+import {Episode} from '../models/episode.model';
+import {Season} from '../models/season.model';
 
 @Component({
   selector: 'app-movie-play',
@@ -18,31 +20,69 @@ import {AppState} from '../ngrx/app.state';
 export class MoviePlayComponent implements OnInit {
   id;
   film: FullMovie = new FullMovie();
-  relatedMovie: MovieModel[] = [];
+  relatedMovie: any[] = [];
   url;
-
+  episodes: Episode[] = [];
+  season: Season = new Season();
+  check: boolean = false;
   constructor(private route: Router,
               private dataService: DataService,
               private store: Store<AppState>,
               public sanitizer: DomSanitizer,
               private router: ActivatedRoute) {
-    this.id = +this.router.snapshot.paramMap.get('id');
-    this.dataService.getFilmById(this.id).subscribe(item => {
-      this.film = item.data;
-      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.film.trailer);
-      this.dataService.getRelatedMovie(this.film).subscribe(data => {
-        this.relatedMovie = data.data;
-      })
+
+    this.router.params.subscribe(param => {
+      this.id = param.id;
+      this.id = this.id.split('_',2);
+
+      if (this.id[1] === 'M') {
+        this.check = true;
+        this.dataService.getFilmById(this.id[0]).subscribe(item => {
+          this.film = item.data;
+          this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.film.trailer);
+
+          this.dataService.getRelatedMovie(this.film).subscribe(data => {
+            this.relatedMovie = data.data;
+          });
+
+        });
+      }
+      else {
+        this.check = false;
+        this.dataService.getSeasonById(this.id[0]).subscribe(item => {
+          this.season = item.data;
+
+          this.dataService.getEpisodeBySeasonId(this.season.id).subscribe(data => {
+
+            this.episodes = data.data;
+            this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.episodes[0].url);
+
+            this.dataService.getRelateSeason(this.season).subscribe(data => {
+              this.relatedMovie = data.data;
+              console.log(this.relatedMovie);
+            });
+          });
+        });
+
+
+      }
+
     });
+
   }
 
-  goToDetail(data: MovieModel) {
-    this.store.dispatch(new BackgroundDataActions.RemoveBackgroundData());
-    this.store.dispatch(new BackgroundDataActions.AddBackgroundData({url: data.background}));
-    let name: string;
-    name = data.movie_name;
-    name = data.id + '_' + name.split(' ').join('_');
-    this.route.navigate(['film/' + name]);
+  goToDetail(data: any) {
+    if (this.check === true) {
+      this.store.dispatch(new BackgroundDataActions.RemoveBackgroundData());
+      this.store.dispatch(new BackgroundDataActions.AddBackgroundData({url: data.background}));
+      let name: string;
+      name = data.movie_name;
+      name = data.id + '_' + name.split(' ').join('_');
+      this.route.navigate(['film/' + name]);
+    } else {
+      console.log('/film/' + data.id +'_S/play');
+      this.route.navigate(['/film/' + data.id +'_S/play']);
+    }
   }
 
 

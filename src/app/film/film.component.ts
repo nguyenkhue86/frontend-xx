@@ -168,8 +168,12 @@ export class FilmComponent implements OnInit {
     this.route.navigate(['/genre/' + name]);
   }
 
-  playMovie() {
-    this.route.navigate(['/film/' + this.film.id + '/play']);
+  playMovie(type: Season) {
+    if (type === null) {
+      this.route.navigate(['/film/' + this.film.id + '_M/play']);
+    } else {
+      this.route.navigate(['/film/' + type.id +'_S/play']);
+    }
   }
 
   ngOnInit() {

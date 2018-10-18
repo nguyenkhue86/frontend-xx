@@ -4,8 +4,9 @@
     <div class="movie">
       <iframe [src]='url' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       <div class="title">
-        <h3>{{film.movie_name}}</h3>
-        <p>{{film.view}} views</p>
+        <h3 *ngIf="check">{{film.movie_name}}</h3>
+        <!-- case 2: -->
+        <h3 *ngIf="!check">SEASON {{season.season}}</h3>
       </div> <!--end .movie-title -->
       <div class="comment-box"></div>
     </div>
@@ -17,11 +18,16 @@
         </div>
         <div class="title-box">
           <div class="title">
-            <p>{{item.movie_name}}</p>
+            <p *ngIf="check">{{item.movie_name}}</p>
+            <!-- case 2: -->
+            <p *ngIf="!check">Season {{item.season}}</p>
           </div>
           <div class="description">
-            <p class="company">{{item.company_name}}</p>
-            <p class="view">{{item.view}} views</p>
+            <p *ngIf="check" class="company">{{item.company_name}}</p>
+            <p *ngIf="check" class="view">{{item.view}} views</p>
+            <!-- case 2: -->
+            <p *ngIf="!check" class="company">{{item.episodes}} episodes</p>
+            <p *ngIf="!check" class="view">{{item.date}}</p>
           </div>
         </div>
       </div>

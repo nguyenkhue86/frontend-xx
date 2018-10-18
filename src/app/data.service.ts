@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Kind} from './models/kind.model';
 import {Comment} from './models/comment.model';
 import {FullMovie} from './models/fullmovie.model';
+import {Season} from './models/season.model';
 
 const api = 'http://localhost/api-php/api';
 const httpOptions = {
@@ -98,8 +99,18 @@ export class DataService {
     return this.http.get<any>(url + id);
   }
 
+  getSeasonById(id): Observable<any> {
+    const url = api + '/season.php?id=';
+    return this.http.get<any>(url + id);
+  }
+
   getRelatedMovie(film: FullMovie): Observable<any> {
     const url = api + '/related_movie.php?id=' + film.id +'&kind=' + film.kind + '&actor=' + film.actor + '&director=' + film.director_id + '&company=' + film.company_id;
+    return this.http.get<any>(url);
+  }
+
+  getRelateSeason(season: Season): Observable<any>  {
+    const url = api + '/related_movie.php?id=' + season.season + '&movie=' + season.movie_id ;
     return this.http.get<any>(url);
   }
 

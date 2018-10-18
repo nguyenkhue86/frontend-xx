@@ -50,6 +50,9 @@
   border: 1px solid #abb7c4;
   min-width: 250px;
 }
+.movie-img img {
+  min-width: 250px;
+}
 
 .movie iframe {
   width: 100%;

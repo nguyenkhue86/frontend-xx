@@ -25,6 +25,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { GenreComponent } from './genre/genre.component';
 import { SearchComponent } from './search/search.component';
 import {MoviePlayComponent} from './movie-play/movie-play.component';
+import { CommentComponent } from './comment/comment.component';
 
 
 const routes: Routes = [
@@ -45,7 +46,8 @@ const routes: Routes = [
     GenreComponent,
     SearchComponent,
     LoginDialogComponent,
-    MoviePlayComponent
+    MoviePlayComponent,
+    CommentComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
