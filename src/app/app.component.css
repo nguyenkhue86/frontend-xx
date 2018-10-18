@@ -92,6 +92,10 @@
   padding: 0.7em;
 }
 
+.btnLogin {
+  background: #dd003f;
+}
+
 .search {
   display: flex;
   flex-direction: row;

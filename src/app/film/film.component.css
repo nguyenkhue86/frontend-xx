@@ -51,11 +51,7 @@
   font-size: 2em;
   font-weight: bold;
 }
-.movie-box .detail-box .mat-icon-button {
-  border: 1px solid #fff;
-  border-radius: 50%;
-  margin-right: 5px;
-}
+
 .movie-box .detail-box .mat-icon-button:focus {
   outline: none;
 }
@@ -63,6 +59,37 @@
 .movie-box .detail-box .rating {
   margin-top: 1em;
   cursor: default;
+}
+.share {
+  height: 50px;
+  line-height: 50px;
+}
+.icon i {
+  font-size: 2em;
+}
+
+@keyframes pulse-heart {
+  0% {font-size: 2em}
+  50% {font-size: 1em;color: #dd003f}
+  100% {font-size: 2em}
+}
+
+@keyframes pulse-share {
+  0% {font-size: 2em}
+  50% {font-size: 1em;color: #dcf836}
+  100% {font-size: 2em}
+}
+
+.heart-icon:hover i {
+  animation-name: pulse-heart;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+}
+
+.share-icon:hover i {
+  animation-name: pulse-share;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
 }
 
 

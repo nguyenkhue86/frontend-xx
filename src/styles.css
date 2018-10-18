@@ -51,3 +51,6 @@ img {
 .mat-menu-panel {
   position: fixed;
 }
+.input-form .mat-form-field-infix {
+  width: 300px !important;
+}

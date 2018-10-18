@@ -48,7 +48,6 @@ export class GenreComponent implements OnInit {
     this.paging.setMovies(data.data);
     this.paging.setDataPaging();
     this.datal = this.paging.movies_paging;
-    console.log(this.datal);
     this.pages = this.paging.page_total;
   }
   watch(data: MovieModel) {

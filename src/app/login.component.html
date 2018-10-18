@@ -1,0 +1,25 @@
+<div class="login-container">
+  <div (click)="closeDialog()" class="close"><i class="far fa-times-circle"></i></div>
+  <div class="title"><h3>LOGIN</h3></div>
+  <div class="input-form">
+    <mat-form-field>
+      <mat-label>Username or email</mat-label>
+      <input matInput required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input type="password" matInput required>
+    </mat-form-field>
+    <div class="sign-up">
+      <a >Sign up</a>
+    </div>
+    <div class="login-button">
+      <button mat-raised-button color="accent">LOG IN <i class="fas fa-sign-in-alt"></i></button>
+    </div>
+    <p class="via">Or via social</p>
+    <div class="social-network">
+      <button class="face" mat-raised-button ><i class="fab fa-facebook-f"></i> Facebook</button>
+      <button class="google" mat-raised-button color="warn"><i class="fab fa-google"></i> Google</button>
+    </div>
+  </div>
+</div>

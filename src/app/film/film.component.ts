@@ -131,7 +131,7 @@ export class FilmComponent implements OnInit {
           this.reset();
           setTimeout(() => {
             this.getComment();
-          }, 100);
+          }, 200);
         } catch (e) {
           console.log(e);
         }
@@ -166,6 +166,10 @@ export class FilmComponent implements OnInit {
     let name: string;
     name ='C_'+ country_id + '_' + country_name.split(' ').join('_');
     this.route.navigate(['/genre/' + name]);
+  }
+
+  playMovie() {
+    this.route.navigate(['/film/' + this.film.id + '/play']);
   }
 
   ngOnInit() {

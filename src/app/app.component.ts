@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component,Inject, Input, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {AppState} from './ngrx/app.state';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -9,6 +9,7 @@ import {Country} from './models/country.model';
 import {MovieModel} from './models/movie.model';
 import {PlatformLocation} from '../../node_modules/@angular/common';
 import {FormControl} from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -26,9 +27,9 @@ export class AppComponent implements OnInit {
   checkScroll: boolean = true;
   formSearch = new FormControl();
 
-
   constructor(private store: Store<AppState>,
               private route: Router,
+              public dialog: MatDialog,
               private location: PlatformLocation,
               private dataService: DataService) {
     this.dataService.getKindsOfFilm().subscribe(data => {
@@ -89,8 +90,6 @@ export class AppComponent implements OnInit {
     window.scroll(9999, 9999);
   }
 
-
-
   goHome() {
     this.formSearch.setValue('');
     this.store.dispatch(new BackgroundDataActions.RemoveBackgroundData());
@@ -127,5 +126,32 @@ export class AppComponent implements OnInit {
 
   }
 
+  openLoginDialog(): void {
+    const dialogRef = this.dialog.open(LoginDialogComponent, {
+      width: '400px',
+    });
+
+  }
+
+
+}
+
+@Component({
+  selector: 'login-dialog',
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.css']
+})
+export class LoginDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<LoginDialogComponent>,
+    ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  closeDialog() {
+    this.dialogRef.close();
+  }
 
 }

@@ -1,12 +1,87 @@
 .movie-play-container {
+  position: relative;
   width: 100%;
   min-height: 100vh;
+  z-index: 11;
+}
+.opacity-box {
+  top:0;
+  opacity: 0.9;
+  background: #020d18;
+  position: absolute;z-index: 1;
+  width: 100vw;
+  height: 100vh;
+}
+.movie-box {
+  padding: 0 1em;
+  width: 100%;
+  margin: 6% auto 0;
+  display: flex;
 }
 
+.movie {
+  margin-right:1em ;
+  width: 70%;
+  padding-left:6em ;
+}
+.movie-list-box {
+  width: 30%;
+  padding: 0 2em;
+}
+.movie-list-box h4 {
+  color: white;
+  border-bottom: 1px solid #abb7c4;
+  padding-bottom: 0.5em;
+}
+.movie-list{
+  margin: 1.5em 0;
+  display: flex;
+}
+.movie-list:hover{
+  cursor: pointer;
+  box-shadow: 0 0 5px 1px #dcf836;
+}
 
-.movie-box {
-  height: 50%;
+.movie-img{
   width: 50%;
+  margin: 0;
+  overflow: hidden;
+  height: 120px;
+  border: 1px solid #abb7c4;
+  min-width: 250px;
+}
 
-  background: #4280bf;
+.movie iframe {
+  width: 100%;
+  height: 600px;
+}
+.movie .title {
+
+}
+.movie .title h3 {
+   color: white;
+   font-size: 1.5em;
+   font-weight: bold;
+ }
+
+
+.movie .title p {
+  color: #abb7c4;
+  font-size: 1em;
+}
+.title-box{
+  padding: 0.5em;
+}
+.title-box .title {
+}
+.title-box .title p {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: white;
+}
+.title-box .description p{
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #abb7c4;
+  margin: 0;
 }

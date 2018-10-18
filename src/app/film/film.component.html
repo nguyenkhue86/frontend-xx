@@ -2,7 +2,7 @@
   <div class="image-box">
     <div class="image"><img src={{film.avatar_movie_url}} alt="" class="img-full-width"></div>
     <div class="watch-box">
-      <button mat-raised-button > <mat-icon>arrow_right</mat-icon> <span class="spanWatchNow">{{watch_now}}</span> </button>
+      <button mat-raised-button (click)="playMovie()" > <mat-icon>arrow_right</mat-icon> <span class="spanWatchNow">{{watch_now}}</span> </button>
     </div>
   </div>
   <div class="detail-box">
@@ -11,8 +11,8 @@
         <p class="movie-title">{{film.movie_name}}</p>
       </div>
       <div class="share">
-        <button mat-icon-button > <mat-icon>share</mat-icon></button>
-        <button mat-icon-button > <mat-icon>favorite</mat-icon></button>
+        <button mat-icon-button class="icon share-icon" ><i class="fas fa-share-alt"></i></button>
+        <button mat-icon-button class="icon heart-icon" ><i class="fas fa-heart"></i></button>
       </div>
       <div class="rating">
         <span class="fa fa-star  {{item.active?'active':''}}"  *ngFor="let item of starList.starRatingList"> </span> <span matBadge={{rateView}} matBadgeColor="accent" matBadgeSize="medium" matBadgeOverlap="false"></span>
@@ -53,6 +53,8 @@
               <p class="contentP">{{film.date_of_manufacture}}</p>
               <p class="titleP">Duration :</p>
               <p class="contentP">{{film.duration}} minutes</p>
+              <p class="titleP">Quality :</p>
+              <p class="contentP">{{film.quality}}</p>
               <p class="titleP">Country :</p>
               <p class="contentP"><a (click)="getFilmByCountry(film.country_id,film.country_name)" >{{film.country_name}}</a></p>
               <p class="titleP">Company :</p>
@@ -95,8 +97,6 @@
                 </p>
               </div>
             </div>
-
-
           </div>
           <div id="respond" class="comment-box">
             <h3 id="reply-title" class="comment-reply-title">Leave a Review
