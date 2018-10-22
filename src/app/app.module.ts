@@ -1,15 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import {AppComponent, LoginDialogComponent} from './app.component';
+import {AppComponent, LoginDialogComponent, SignUpDialogComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatBadgeModule,
-  MatButtonModule,
+  MatButtonModule, MatCheckboxModule,
   MatDialogModule, MatFormFieldModule,
   MatIconModule, MatInputModule,
   MatMenuModule,
-  MatSelectModule,
+  MatSelectModule, MatSnackBarModule,
   MatTabsModule
 } from '@angular/material';
 import {RouterModule, Routes} from '@angular/router';
@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: '**', component: PageNotFoundComponent}
 ];
 @NgModule({
-  entryComponents: [LoginDialogComponent],
+  entryComponents: [LoginDialogComponent, SignUpDialogComponent],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -47,12 +47,15 @@ const routes: Routes = [
     SearchComponent,
     LoginDialogComponent,
     MoviePlayComponent,
-    CommentComponent
+    CommentComponent,
+    SignUpDialogComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     MatBadgeModule,
+    MatCheckboxModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     MatDialogModule,
     FormsModule,

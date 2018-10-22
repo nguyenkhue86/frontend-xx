@@ -114,6 +114,11 @@ export class DataService {
     return this.http.get<any>(url);
   }
 
+  getUser(username: string, password: string): Observable<any>  {
+    const url = api + '/user.php?username=\'' + username + '\'&password=\'' + password +'\'' ;
+    return this.http.get<any>(url);
+  }
+
 
 
 }

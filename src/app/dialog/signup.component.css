@@ -1,0 +1,48 @@
+.login-container {
+  height: 30%;
+}
+
+.title h3 {
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Dosis', sans-serif;
+}
+
+.input-form {
+  text-align: center;
+}
+
+.input-form mat-form-field mat-label {
+  font-weight: bold;
+}
+
+.login-button button {
+  background: #dd003f;
+}
+
+.sign-up {
+  text-align: right;
+  margin: 0 2.3em 1em 0;
+  text-decoration: underline;
+}
+.sign-up:hover {
+  color: #48629b;
+  cursor: pointer;
+}
+
+.via {
+  margin-top: 0.5em;
+}
+
+.social-network button {
+  margin-right: 0.5em;
+}
+.face {
+  color: white;
+  background: #48629b ;
+}
+
+
+
+
+
